@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/config/theme.dart';
 import 'package:the_gorgeous_login/pages/login_page/models/snackbar.dart';
 
@@ -169,104 +170,17 @@ class _SignInState extends State<SignIn> {
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  ApplicationRouter.router.navigateTo(context, '/gamepannel');
+                },
                 child: const Text(
-                  'Forgot Password?',
+                  'play without login',
                   style: TextStyle(
                       decoration: TextDecoration.underline,
                       color: Colors.white,
-                      fontSize: 16.0,
+                      fontSize: 30.0,
                       fontFamily: 'WorkSansMedium'),
                 )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: <Color>[
-                          Colors.white10,
-                          Colors.white,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: <double>[0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: Text(
-                    'Or',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        fontFamily: 'WorkSansMedium'),
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: <Color>[
-                          Colors.white,
-                          Colors.white10,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: <double>[0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
-                ),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, right: 40.0),
-                child: GestureDetector(
-                  onTap: () => CustomSnackBar(
-                      context, const Text('Facebook button pressed')),
-                  child: Container(
-                    padding: const EdgeInsets.all(15.0),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      FontAwesomeIcons.facebookF,
-                      color: Color(0xFF0084ff),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: GestureDetector(
-                  onTap: () => CustomSnackBar(
-                      context, const Text('Google button pressed')),
-                  child: Container(
-                    padding: const EdgeInsets.all(15.0),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      FontAwesomeIcons.google,
-                      color: Color(0xFF0084ff),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
         ],
       ),
