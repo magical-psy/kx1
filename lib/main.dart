@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/pages/login_page.dart';
+import 'package:the_gorgeous_login/pages/login_page/pages/login_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
