@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:the_gorgeous_login/theme.dart';
+import 'package:the_gorgeous_login/config/theme.dart';
 import 'package:the_gorgeous_login/pages/login_page/models/snackbar.dart';
 
 class SignUp extends StatefulWidget {

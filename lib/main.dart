@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:the_gorgeous_login/pages/login_page/pages/login_page.dart';
+import 'package:the_gorgeous_login/pages/gamepannel_page/pages/gamepannel_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
-      home: LoginPage(),
+      home: gamepannel(),
     );
   }
 }
