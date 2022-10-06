@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reorderables/reorderables.dart';
 
 class Pannel extends StatefulWidget {
   Pannel({Key key}) : super(key: key);
@@ -9,89 +8,113 @@ class Pannel extends StatefulWidget {
 }
 
 class _PannelState extends State<Pannel> {
-  List<Widget> _tiles;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  List<int> _dragData = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   @override
   Widget build(BuildContext context) {
-    final double _iconSize = MediaQuery.of(context).size.width * 1 / 6;
-    _tiles = <Widget>[
-      Icon(Icons.filter_1, size: _iconSize),
-      Icon(Icons.filter_2, size: _iconSize),
-      Icon(Icons.filter_3, size: _iconSize),
-      Icon(Icons.filter_4, size: _iconSize),
-      Icon(Icons.filter_5, size: _iconSize),
-      Icon(Icons.filter_6, size: _iconSize),
-      Icon(Icons.filter_7, size: _iconSize),
-      Icon(Icons.filter_8, size: _iconSize),
-      Icon(Icons.filter_9, size: _iconSize),
-    ];
-    void _onReorder(int oldIndex, int newIndex) {
+    return _buildMap();
+  }
+
+  _buildMap() {
+    return GridView.builder(
+      itemCount: 9,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.all(3),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        mainAxisSpacing: MediaQuery.of(context).size.width * 1 / 40,
+        crossAxisSpacing: MediaQuery.of(context).size.width * 1 / 8,
+      ),
+      itemBuilder: (context, index) {
+        return DragTarget<int>(
+          builder: (BuildContext context, List<dynamic> candidateData,
+              List<dynamic> rejectedData) {
+            print('candidateData:$candidateData,rejectedData:$rejectedData');
+            return _dragData[index] == 0
+                ? Container(
+                    height: MediaQuery.of(context).size.width * 1 / 8,
+                    width: MediaQuery.of(context).size.width * 1 / 8,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.red)),
+                  )
+                : Container(
+                    height: MediaQuery.of(context).size.width * 1 / 8,
+                    width: MediaQuery.of(context).size.width * 1 / 8,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      _dragData[index].toString(),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  );
+          },
+          onWillAccept: (int color) {
+            print('onWillAccept:$color');
+            return true;
+          },
+          onAccept: (int something) {
+            setState(() {
+              _dragData[index] = 4;
+            });
+            print('onAccept:$something');
+          },
+          onLeave: (int color) {
+            print('onLeave:$color');
+          },
+        );
+      },
+    );
+  }
+}
+
+class NumSource extends StatefulWidget {
+  int data = 0;
+  NumSource({Key key, this.data}) : super(key: key);
+
+  @override
+  State<NumSource> createState() => _NumSourceState();
+}
+
+class _NumSourceState extends State<NumSource> {
+  @override
+  Widget build(BuildContext context) {
+    void update_data(int randomnum) {
       setState(() {
-        Widget row = _tiles.removeAt(oldIndex);
-        _tiles.insert(newIndex, row);
+        widget.data = randomnum;
       });
     }
 
-    var wrap = ReorderableWrap(
-        maxMainAxisCount: 3,
-        spacing: 8.0,
-        runSpacing: 4.0,
-        padding: const EdgeInsets.all(8),
-        children: _tiles,
-        onReorder: _onReorder,
-        onNoReorder: (int index) {
-          //this callback is optional
-          debugPrint(
-              '${DateTime.now().toString().substring(5, 22)} reorder cancelled. index:$index');
-        },
-        onReorderStarted: (int index) {
-          //this callback is optional
-          debugPrint(
-              '${DateTime.now().toString().substring(5, 22)} reorder started: index:$index');
-        });
-
-    var column = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        wrap,
-        // ButtonBar(
-        //   alignment: MainAxisAlignment.start,
-        //   children: <Widget>[
-        //     IconButton(
-        //       iconSize: 50,
-        //       icon: Icon(Icons.add_circle),
-        //       color: Colors.deepOrange,
-        //       padding: const EdgeInsets.all(0.0),
-        //       onPressed: () {
-        //         var newTile = Icon(Icons.filter_9_plus, size: _iconSize);
-        //         setState(() {
-        //           _tiles.add(newTile);
-        //         });
-        //       },
-        //     ),
-        //     IconButton(
-        //       iconSize: 50,
-        //       icon: Icon(Icons.remove_circle),
-        //       color: Colors.teal,
-        //       padding: const EdgeInsets.all(0.0),
-        //       onPressed: () {
-        //         setState(() {
-        //           _tiles.removeAt(0);
-        //         });
-        //       },
-        //     ),
-        //   ],
-        // ),
-      ],
-    );
-
-    return SingleChildScrollView(
-      child: column,
+    return Draggable<int>(
+      data: widget.data,
+      child: Container(
+        height: MediaQuery.of(context).size.width * 1 / 7,
+        width: MediaQuery.of(context).size.width * 1 / 7,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: Colors.red, borderRadius: BorderRadius.circular(10)),
+        child: Text(
+          widget.data.toString(),
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+      ),
+      feedback: Container(
+        height: 100,
+        width: 100,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+        child: DefaultTextStyle.merge(
+          style: TextStyle(color: Colors.white, fontSize: 18),
+          child: Text(
+            'moving',
+          ),
+        ),
+      ),
     );
   }
 }
