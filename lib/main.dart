@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart';
 import 'package:the_gorgeous_login/pages/login_page/pages/login_page.dart';
 import 'package:fluro/fluro.dart' as fluro;
 import 'config/routers/router_application.dart';
@@ -12,7 +14,14 @@ void main() {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(MyApp());
+  final gamedata = GameData();
+
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider.value(value: gamedata)],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/pages/gamepannel_page/moduels/pannel.dart';
+import 'package:the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart';
 
 class GamepannelPage extends StatefulWidget {
   const GamepannelPage({Key key}) : super(key: key);
@@ -124,7 +126,9 @@ class _GamepannelPageState extends State<GamepannelPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Pannel(),
+                Pannel(
+                  position: 0,
+                ),
                 Container(
                   child: Image(
                       height:
@@ -132,7 +136,7 @@ class _GamepannelPageState extends State<GamepannelPage> {
                       fit: BoxFit.fill,
                       image: const AssetImage('assets/img/login_logo.png')),
                 ),
-                Pannel(),
+                Pannel(position: 1),
                 get_move()
               ],
             ),
@@ -151,17 +155,15 @@ class get_move extends StatefulWidget {
 class _get_moveState extends State<get_move> {
   @override
   Widget build(BuildContext context) {
-    NumSource numSource = NumSource(
-      data: 0,
-    );
     return Row(
       children: [
         OutlinedButton(
             child: Text("get a redom num"),
             onPressed: () {
-              numSource.data = Random().nextInt(6);
+              final data = Provider.of<GameData>(context, listen: false);
+              data.getnum();
             }),
-        numSource
+        NumSource()
       ],
     );
   }

@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart';
 
 class Pannel extends StatefulWidget {
-  Pannel({Key key}) : super(key: key);
+  int position; // position 0 means the upper mat and the possition 1
+  Pannel({Key key, this.position}) : super(key: key);
 
   @override
   State<Pannel> createState() => _PannelState();
 }
 
 class _PannelState extends State<Pannel> {
-  List<int> _dragData = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<int> _dragData;
 
   @override
   Widget build(BuildContext context) {
-    return _buildMap();
-  }
-
-  _buildMap() {
+    final data = Provider.of<GameData>(context, listen: false);
+    if (widget.position == 0) {
+      _dragData = data.upMat;
+    } else {
+      _dragData = data.downMat;
+    }
     return GridView.builder(
       itemCount: 9,
       shrinkWrap: true,
@@ -53,18 +58,20 @@ class _PannelState extends State<Pannel> {
                     ),
                   );
           },
-          onWillAccept: (int color) {
-            print('onWillAccept:$color');
+          onWillAccept: (int something) {
+            print('onWillAccept:$something');
             return true;
           },
           onAccept: (int something) {
             setState(() {
-              _dragData[index] = 4;
+              _dragData[index] = something;
+              data.updatemat(widget.position, _dragData);
+              print(_dragData);
             });
             print('onAccept:$something');
           },
-          onLeave: (int color) {
-            print('onLeave:$color');
+          onLeave: (int something) {
+            print('onLeave:$something');
           },
         );
       },
@@ -73,8 +80,7 @@ class _PannelState extends State<Pannel> {
 }
 
 class NumSource extends StatefulWidget {
-  int data = 0;
-  NumSource({Key key, this.data}) : super(key: key);
+  NumSource({Key key}) : super(key: key);
 
   @override
   State<NumSource> createState() => _NumSourceState();
@@ -83,14 +89,10 @@ class NumSource extends StatefulWidget {
 class _NumSourceState extends State<NumSource> {
   @override
   Widget build(BuildContext context) {
-    void update_data(int randomnum) {
-      setState(() {
-        widget.data = randomnum;
-      });
-    }
+    final _counter = Provider.of<GameData>(context);
 
     return Draggable<int>(
-      data: widget.data,
+      data: _counter.getNum,
       child: Container(
         height: MediaQuery.of(context).size.width * 1 / 7,
         width: MediaQuery.of(context).size.width * 1 / 7,
@@ -98,7 +100,7 @@ class _NumSourceState extends State<NumSource> {
         decoration: BoxDecoration(
             color: Colors.red, borderRadius: BorderRadius.circular(10)),
         child: Text(
-          widget.data.toString(),
+          _counter.getNum.toString(),
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
