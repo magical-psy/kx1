@@ -11,16 +11,8 @@ class Pannel extends StatefulWidget {
 }
 
 class _PannelState extends State<Pannel> {
-  List<int> _dragData;
-
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<GameData>(context, listen: false);
-    if (widget.position == 0) {
-      _dragData = data.upMat;
-    } else {
-      _dragData = data.downMat;
-    }
     return GridView.builder(
       itemCount: 9,
       shrinkWrap: true,
@@ -32,11 +24,13 @@ class _PannelState extends State<Pannel> {
         crossAxisSpacing: MediaQuery.of(context).size.width * 1 / 8,
       ),
       itemBuilder: (context, index) {
+        final data = Provider.of<GameData>(context, listen: true);
         return DragTarget<int>(
           builder: (BuildContext context, List<dynamic> candidateData,
               List<dynamic> rejectedData) {
             print('candidateData:$candidateData,rejectedData:$rejectedData');
-            return _dragData[index] == 0
+            return (widget.position == 0 ? data.upMat : data.downMat)[index] ==
+                    0
                 ? Container(
                     height: MediaQuery.of(context).size.width * 1 / 8,
                     width: MediaQuery.of(context).size.width * 1 / 8,
@@ -53,26 +47,32 @@ class _PannelState extends State<Pannel> {
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(10)),
                     child: Text(
-                      _dragData[index].toString(),
+                      (widget.position == 0 ? data.upMat : data.downMat)[index]
+                          .toString(),
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   );
           },
-          onWillAccept: (int something) {
-            print('onWillAccept:$something');
-            return true;
-          },
+          // onWillAccept: (int something) {
+          //   print('onWillAccept:$something');
+          //   return true;
+          // },
           onAccept: (int something) {
-            setState(() {
-              _dragData[index] = something;
-              data.updatemat(widget.position, _dragData);
-              print(_dragData);
-            });
-            print('onAccept:$something');
+            if ((widget.position == 0 ? data.upMat : data.downMat)[index] ==
+                0) {
+              setState(() {
+                (widget.position == 0 ? data.upMat : data.downMat)[index] =
+                    something;
+                data.updatemat(widget.position,
+                    (widget.position == 0 ? data.upMat : data.downMat), index);
+                print((widget.position == 0 ? data.upMat : data.downMat));
+              });
+              print('onAccept:$something');
+            }
           },
-          onLeave: (int something) {
-            print('onLeave:$something');
-          },
+          // onLeave: (int something) {
+          //   print('onLeave:$something');
+          // },
         );
       },
     );
@@ -98,7 +98,7 @@ class _NumSourceState extends State<NumSource> {
         width: MediaQuery.of(context).size.width * 1 / 7,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(10)),
+            color: Colors.green, borderRadius: BorderRadius.circular(10)),
         child: Text(
           _counter.getNum.toString(),
           style: TextStyle(color: Colors.white, fontSize: 18),

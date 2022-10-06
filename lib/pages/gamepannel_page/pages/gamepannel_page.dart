@@ -101,7 +101,10 @@ class _GamepannelPageState extends State<GamepannelPage> {
                             width: MediaQuery.of(context).size.height * 0.1,
                             fit: BoxFit.fill,
                             image: const AssetImage('assets/img/p1.JPG')),
-                        Text("くりやま みらい")
+                        Text("くりやま みらい"),
+                        Consumer<GameData>(builder: (context, gamedata, _) {
+                          return Text("point:\n${gamedata.uppoint}");
+                        })
                       ],
                     ),
                   ),
