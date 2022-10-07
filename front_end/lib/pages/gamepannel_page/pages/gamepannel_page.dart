@@ -116,7 +116,10 @@ class _GamepannelPageState extends State<GamepannelPage> {
                             width: MediaQuery.of(context).size.height * 0.1,
                             fit: BoxFit.fill,
                             image: const AssetImage('assets/img/p2.JPG')),
-                        Text("Princess Zelda")
+                        Text("Princess Zelda"),
+                        Consumer<GameData>(builder: (context, gamedata, _) {
+                          return Text("point:\n${gamedata.downpoint}");
+                        })
                       ],
                     ),
                   )

@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GameData with ChangeNotifier {
+  int turn = 0;
   int uppoint = 0;
   int downpoint = 0;
   int randomNum = 0;
@@ -46,18 +48,20 @@ class GameData with ChangeNotifier {
     return point;
   }
 
-  void updatemat(int sign, List<int> newmat, index) {
+  void updatemat(int sign, List<int> newmat, index, context) {
     if (sign == 0) {
       updata = newmat;
-      uppoint = updatePoint(updata);
     } else {
       downdata = newmat;
     }
     check(sign, index);
+
+    downpoint = updatePoint(downdata);
+    uppoint = updatePoint(updata);
+    turn == 0 ? turn = 1 : turn = 0;
+    check_terminal(context);
+    print(turn);
     notifyListeners();
-    print("after the move the mat has been changed like this");
-    print("up$updata");
-    print("down$downdata");
   }
 
   void check(int sign, int position) {
@@ -73,6 +77,40 @@ class GameData with ChangeNotifier {
           upMat[i] = 0;
         }
       }
+    }
+  }
+
+  void check_terminal(context) {
+    int check1 = 0;
+    int check2 = 0;
+    for (int i = 0; i < 9; i++) {
+      if (updata[i] == 0) check1 = 1;
+      if (updata[i] == 0) check2 = 1;
+    }
+    if (check1 == 0 || check2 == 0) {
+      turn = 2;
+      showCupertinoDialog(
+          context: context,
+          builder: (context) {
+            return CupertinoAlertDialog(
+              title: Text('hint'),
+              content: Text('are you sure about it'),
+              actions: <Widget>[
+                CupertinoDialogAction(
+                  child: Text('cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop('cancel');
+                  },
+                ),
+                CupertinoDialogAction(
+                  child: Text('leave'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
     }
   }
 }

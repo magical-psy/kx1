@@ -28,7 +28,6 @@ class _PannelState extends State<Pannel> {
         return DragTarget<int>(
           builder: (BuildContext context, List<dynamic> candidateData,
               List<dynamic> rejectedData) {
-            print('candidateData:$candidateData,rejectedData:$rejectedData');
             return (widget.position == 0 ? data.upMat : data.downMat)[index] ==
                     0
                 ? Container(
@@ -59,12 +58,16 @@ class _PannelState extends State<Pannel> {
           // },
           onAccept: (int something) {
             if ((widget.position == 0 ? data.upMat : data.downMat)[index] ==
-                0) {
+                    0 &&
+                data.turn == widget.position) {
               setState(() {
                 (widget.position == 0 ? data.upMat : data.downMat)[index] =
                     something;
-                data.updatemat(widget.position,
-                    (widget.position == 0 ? data.upMat : data.downMat), index);
+                data.updatemat(
+                    widget.position,
+                    (widget.position == 0 ? data.upMat : data.downMat),
+                    index,
+                    context);
                 print((widget.position == 0 ? data.upMat : data.downMat));
               });
               print('onAccept:$something');
@@ -89,10 +92,23 @@ class NumSource extends StatefulWidget {
 class _NumSourceState extends State<NumSource> {
   @override
   Widget build(BuildContext context) {
-    final _counter = Provider.of<GameData>(context);
+    final gamedata = Provider.of<GameData>(context, listen: true);
+    if (gamedata.turn == 2) {
+      return Container(
+        height: MediaQuery.of(context).size.width * 1 / 7,
+        width: MediaQuery.of(context).size.width * 1 / 7,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+        child: DefaultTextStyle.merge(
+          style: TextStyle(color: Colors.white, fontSize: 18),
+          child: Text("0"),
+        ),
+      );
+    }
 
     return Draggable<int>(
-      data: _counter.getNum,
+      data: gamedata.getNum,
       child: Container(
         height: MediaQuery.of(context).size.width * 1 / 7,
         width: MediaQuery.of(context).size.width * 1 / 7,
@@ -100,21 +116,19 @@ class _NumSourceState extends State<NumSource> {
         decoration: BoxDecoration(
             color: Colors.green, borderRadius: BorderRadius.circular(10)),
         child: Text(
-          _counter.getNum.toString(),
+          gamedata.getNum.toString(),
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
       feedback: Container(
-        height: 100,
-        width: 100,
+        height: MediaQuery.of(context).size.width * 1 / 7,
+        width: MediaQuery.of(context).size.width * 1 / 7,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color: Colors.blue, borderRadius: BorderRadius.circular(10)),
         child: DefaultTextStyle.merge(
           style: TextStyle(color: Colors.white, fontSize: 18),
-          child: Text(
-            'moving',
-          ),
+          child: Text(gamedata.getNum.toString()),
         ),
       ),
     );
