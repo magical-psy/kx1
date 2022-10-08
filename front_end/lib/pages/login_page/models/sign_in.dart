@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:the_gorgeous_login/config/request/methods.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/config/theme.dart';
 import 'package:the_gorgeous_login/pages/login_page/models/snackbar.dart';
@@ -161,9 +162,18 @@ class _SignInState extends State<SignIn> {
                           fontFamily: 'WorkSansBold'),
                     ),
                   ),
-                  onPressed: () {
-                    ApplicationRouter.router.navigateTo(context, '/loginmode');
-
+                  onPressed: () async {
+                    // ApplicationRouter.router.navigateTo(context, '/loginmode');
+                    Map<String, dynamic> data = {
+                      "id": "${loginEmailController.text}",
+                      "password": "${loginPasswordController.text}"
+                    };
+                    var content = await DioUtil.requestData("homePageUrl",
+                        formData: data);
+                    print(content["code"]);
+                    if (content["code"] != 0) {
+                      return;
+                    }
                     CustomSnackBar(context, const Text('Login button pressed'));
                   },
                 ),

@@ -1,0 +1,388 @@
+define(['dart_sdk', 'packages/fluro/src/tree.dart', 'packages/fluro/src/common.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/page.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/flutter/src/cupertino/route.dart', 'packages/flutter/src/animation/listener_helpers.dart'], (function load__packages__fluro__src__router_dart(dart_sdk, packages__fluro__src__tree$46dart, packages__fluro__src__common$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__page$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__flutter__src__cupertino__route$46dart, packages__flutter__src__animation__listener_helpers$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const tree = packages__fluro__src__tree$46dart.src__tree;
+  const common = packages__fluro__src__common$46dart.src__common;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const pages = packages__flutter__src__widgets__widget_span$46dart.src__widgets__pages;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const page = packages__flutter__src__material__page$46dart.src__material__page;
+  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const platform = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
+  const route$ = packages__flutter__src__cupertino__route$46dart.src__cupertino__route;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  var router = Object.create(dart.library);
+  var fluro = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    RouteL: () => (T.RouteL = dart.constFn(dart.legacy(navigator.Route)))(),
+    RouteLToboolL: () => (T.RouteLToboolL = dart.constFn(dart.fnType(T.boolL(), [T.RouteL()])))(),
+    MaterialPageRouteOfNull: () => (T.MaterialPageRouteOfNull = dart.constFn(page.MaterialPageRoute$(core.Null)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLToWidgetL: () => (T.BuildContextLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL()])))(),
+    MaterialPageRouteLOfNull: () => (T.MaterialPageRouteLOfNull = dart.constFn(dart.legacy(T.MaterialPageRouteOfNull())))(),
+    RouteSettingsL: () => (T.RouteSettingsL = dart.constFn(dart.legacy(navigator.RouteSettings)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ListOfStringL: () => (T.ListOfStringL = dart.constFn(core.List$(T.StringL())))(),
+    ListLOfStringL: () => (T.ListLOfStringL = dart.constFn(dart.legacy(T.ListOfStringL())))(),
+    MapOfStringL$ListLOfStringL: () => (T.MapOfStringL$ListLOfStringL = dart.constFn(core.Map$(T.StringL(), T.ListLOfStringL())))(),
+    MapLOfStringL$ListLOfStringL: () => (T.MapLOfStringL$ListLOfStringL = dart.constFn(dart.legacy(T.MapOfStringL$ListLOfStringL())))(),
+    RouteSettingsLAndMapLOfStringL$ListLOfStringLToMaterialPageRouteLOfNull: () => (T.RouteSettingsLAndMapLOfStringL$ListLOfStringLToMaterialPageRouteLOfNull = dart.constFn(dart.fnType(T.MaterialPageRouteLOfNull(), [T.RouteSettingsL(), T.MapLOfStringL$ListLOfStringL()])))(),
+    HandlerL: () => (T.HandlerL = dart.constFn(dart.legacy(common.Handler)))(),
+    IdentityMapOfStringL$ListLOfStringL: () => (T.IdentityMapOfStringL$ListLOfStringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.ListLOfStringL())))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    AnimationOfdoubleL: () => (T.AnimationOfdoubleL = dart.constFn(animation.Animation$(T.doubleL())))(),
+    AnimationLOfdoubleL: () => (T.AnimationLOfdoubleL = dart.constFn(dart.legacy(T.AnimationOfdoubleL())))(),
+    BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL: () => (T.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.AnimationLOfdoubleL(), T.AnimationLOfdoubleL()])))(),
+    AnimationOfdouble: () => (T.AnimationOfdouble = dart.constFn(animation.Animation$(core.double)))(),
+    BuildContextAndAnimationOfdoubleAndAnimationOfdouble__ToWidget: () => (T.BuildContextAndAnimationOfdoubleAndAnimationOfdouble__ToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, T.AnimationOfdouble(), T.AnimationOfdouble(), framework.Widget])))(),
+    PageRouteL: () => (T.PageRouteL = dart.constFn(dart.legacy(pages.PageRoute)))(),
+    RouteSettingsLAndMapLOfStringL$ListLOfStringLToPageRouteL: () => (T.RouteSettingsLAndMapLOfStringL$ListLOfStringLToPageRouteL = dart.constFn(dart.fnType(T.PageRouteL(), [T.RouteSettingsL(), T.MapLOfStringL$ListLOfStringL()])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    OffsetL: () => (T.OffsetL = dart.constFn(dart.legacy(ui.Offset)))(),
+    TweenOfOffsetL: () => (T.TweenOfOffsetL = dart.constFn(tween.Tween$(T.OffsetL())))(),
+    BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToWidgetL: () => (T.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.AnimationLOfdoubleL(), T.AnimationLOfdoubleL(), T.WidgetL()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 31,
+        [_Location_line]: 192,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 51,
+        [_Location_line]: 192,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 192,
+        [_Location_file]: "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluro-1.6.3/lib/src/router.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 1
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 1,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: -1
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "position",
+        [_Location_column]: 11,
+        [_Location_line]: 208,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 212,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 207,
+        [_Location_file]: "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluro-1.6.3/lib/src/router.dart"
+      });
+    }
+  }, false);
+  var C = Array(13).fill(void 0);
+  var I = ["package:fluro/src/router.dart"];
+  var notFoundHandler = dart.privateName(router, "Router.notFoundHandler");
+  var _routeTree = dart.privateName(router, "_routeTree");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _notFoundRoute = dart.privateName(router, "_notFoundRoute");
+  var _standardTransitionsBuilder = dart.privateName(router, "_standardTransitionsBuilder");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  router.Router = class Router extends core.Object {
+    get notFoundHandler() {
+      return this[notFoundHandler];
+    }
+    set notFoundHandler(value) {
+      this[notFoundHandler] = value;
+    }
+    define(routePath, opts) {
+      let handler = opts && 'handler' in opts ? opts.handler : null;
+      let transitionType = opts && 'transitionType' in opts ? opts.transitionType : null;
+      this[_routeTree].addRoute(new common.AppRoute.new(routePath, handler, {transitionType: transitionType}));
+    }
+    match(path) {
+      return this[_routeTree].matchRoute(path);
+    }
+    pop(context) {
+      return navigator.Navigator.pop(T.ObjectL(), context);
+    }
+    navigateTo(context, path, opts) {
+      let replace = opts && 'replace' in opts ? opts.replace : false;
+      let clearStack = opts && 'clearStack' in opts ? opts.clearStack : false;
+      let transition = opts && 'transition' in opts ? opts.transition : null;
+      let transitionDuration = opts && 'transitionDuration' in opts ? opts.transitionDuration : C[0] || CT.C0;
+      let transitionBuilder = opts && 'transitionBuilder' in opts ? opts.transitionBuilder : null;
+      let routeMatch = this.matchRoute(context, path, {transitionType: transition, transitionsBuilder: transitionBuilder, transitionDuration: transitionDuration});
+      let route = routeMatch.route;
+      let completer = async.Completer.new();
+      let future = completer.future;
+      if (routeMatch.matchType == common.RouteMatchType.nonVisual) {
+        completer.complete("Non visual route type.");
+      } else {
+        if (route == null && this.notFoundHandler != null) {
+          route = this[_notFoundRoute](context, path);
+        }
+        if (route != null) {
+          if (dart.test(clearStack)) {
+            future = navigator.Navigator.pushAndRemoveUntil(T.ObjectL(), context, route, dart.fn(check => false, T.RouteLToboolL()));
+          } else {
+            future = dart.test(replace) ? navigator.Navigator.pushReplacement(T.ObjectL(), T.ObjectL(), context, route) : navigator.Navigator.push(T.ObjectL(), context, route);
+          }
+          completer.complete();
+        } else {
+          let error = "No registered route was found to handle '" + dart.str(path) + "'.";
+          core.print(error);
+          completer.completeError(new common.RouteNotFoundException.new(error, path));
+        }
+      }
+      return future;
+    }
+    [_notFoundRoute](context, path) {
+      let creator = dart.fn((routeSettings, parameters) => new (T.MaterialPageRouteOfNull()).new({settings: routeSettings, builder: dart.fn(context => {
+          let t2, t1, t0;
+          t0 = this.notFoundHandler;
+          t1 = context;
+          t2 = parameters;
+          return t0.handlerFunc(t1, t2);
+        }, T.BuildContextLToWidgetL())}), T.RouteSettingsLAndMapLOfStringL$ListLOfStringLToMaterialPageRouteLOfNull());
+      return creator(new navigator.RouteSettings.new({name: path}), null);
+    }
+    matchRoute(buildContext, path, opts) {
+      let t0, t0$, t0$0, t2, t1, t0$1;
+      let routeSettings = opts && 'routeSettings' in opts ? opts.routeSettings : null;
+      let transitionType = opts && 'transitionType' in opts ? opts.transitionType : null;
+      let transitionDuration = opts && 'transitionDuration' in opts ? opts.transitionDuration : C[0] || CT.C0;
+      let transitionsBuilder = opts && 'transitionsBuilder' in opts ? opts.transitionsBuilder : null;
+      let settingsToUse = routeSettings;
+      if (routeSettings == null) {
+        settingsToUse = new navigator.RouteSettings.new({name: path});
+      }
+      let match = this[_routeTree].matchRoute(path);
+      let route = (t0 = match, t0 == null ? null : t0.route);
+      let handler = T.HandlerL().as(route != null ? route.handler : this.notFoundHandler);
+      let transition = transitionType;
+      if (transitionType == null) {
+        transition = route != null ? route.transitionType : common.TransitionType.native;
+      }
+      if (route == null && this.notFoundHandler == null) {
+        return new common.RouteMatch.new({matchType: common.RouteMatchType.noMatch, errorMessage: "No matching route was found"});
+      }
+      let parameters = (t0$0 = (t0$ = match, t0$ == null ? null : t0$.parameters), t0$0 == null ? new (T.IdentityMapOfStringL$ListLOfStringL()).new() : t0$0);
+      if (handler.type == common.HandlerType.function) {
+        t0$1 = handler;
+        t1 = buildContext;
+        t2 = parameters;
+        t0$1.handlerFunc(t1, t2);
+        return new common.RouteMatch.new({matchType: common.RouteMatchType.nonVisual});
+      }
+      let creator = dart.fn((routeSettings, parameters) => {
+        let isNativeTransition = transition == common.TransitionType.native || transition == common.TransitionType.nativeModal;
+        if (isNativeTransition) {
+          if (theme.Theme.of(buildContext).platform == platform.TargetPlatform.iOS) {
+            return new route$.CupertinoPageRoute.new({settings: routeSettings, fullscreenDialog: transition == common.TransitionType.nativeModal, builder: dart.fn(context => {
+                let t2, t1, t0;
+                t0 = handler;
+                t1 = context;
+                t2 = parameters;
+                return t0.handlerFunc(t1, t2);
+              }, T.BuildContextLToWidgetL())});
+          } else {
+            return new page.MaterialPageRoute.new({settings: routeSettings, fullscreenDialog: transition == common.TransitionType.nativeModal, builder: dart.fn(context => {
+                let t2, t1, t0;
+                t0 = handler;
+                t1 = context;
+                t2 = parameters;
+                return t0.handlerFunc(t1, t2);
+              }, T.BuildContextLToWidgetL())});
+          }
+        } else if (transition == common.TransitionType.material || transition == common.TransitionType.materialFullScreenDialog) {
+          return new page.MaterialPageRoute.new({settings: routeSettings, fullscreenDialog: transition == common.TransitionType.materialFullScreenDialog, builder: dart.fn(context => {
+              let t2, t1, t0;
+              t0 = handler;
+              t1 = context;
+              t2 = parameters;
+              return t0.handlerFunc(t1, t2);
+            }, T.BuildContextLToWidgetL())});
+        } else if (transition == common.TransitionType.cupertino || transition == common.TransitionType.cupertinoFullScreenDialog) {
+          return new route$.CupertinoPageRoute.new({settings: routeSettings, fullscreenDialog: transition == common.TransitionType.cupertinoFullScreenDialog, builder: dart.fn(context => {
+              let t2, t1, t0;
+              t0 = handler;
+              t1 = context;
+              t2 = parameters;
+              return t0.handlerFunc(t1, t2);
+            }, T.BuildContextLToWidgetL())});
+        } else {
+          let routeTransitionsBuilder = null;
+          if (transition == common.TransitionType.custom) {
+            routeTransitionsBuilder = transitionsBuilder;
+          } else {
+            routeTransitionsBuilder = this[_standardTransitionsBuilder](transition);
+          }
+          return new pages.PageRouteBuilder.new({settings: routeSettings, pageBuilder: dart.fn((context, animation, secondaryAnimation) => {
+              let t2, t1, t0;
+              t0 = handler;
+              t1 = context;
+              t2 = parameters;
+              return t0.handlerFunc(t1, t2);
+            }, T.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleLToWidgetL()), transitionDuration: transitionDuration, transitionsBuilder: T.BuildContextAndAnimationOfdoubleAndAnimationOfdouble__ToWidget().as(routeTransitionsBuilder)});
+        }
+      }, T.RouteSettingsLAndMapLOfStringL$ListLOfStringLToPageRouteL());
+      return new common.RouteMatch.new({matchType: common.RouteMatchType.visual, route: creator(settingsToUse, parameters)});
+    }
+    [_standardTransitionsBuilder](transitionType) {
+      return dart.fn((context, animation, secondaryAnimation, child) => {
+        if (transitionType == common.TransitionType.fadeIn) {
+          return new transitions.FadeTransition.new({opacity: animation, child: child, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1});
+        } else {
+          let topLeft = C[5] || CT.C5;
+          let topRight = C[6] || CT.C6;
+          let bottomLeft = C[7] || CT.C7;
+          let startOffset = bottomLeft;
+          let endOffset = topLeft;
+          if (transitionType == common.TransitionType.inFromLeft) {
+            startOffset = C[8] || CT.C8;
+            endOffset = topLeft;
+          } else if (transitionType == common.TransitionType.inFromRight) {
+            startOffset = topRight;
+            endOffset = topLeft;
+          }
+          return new transitions.SlideTransition.new({position: new (T.TweenOfOffsetL()).new({begin: startOffset, end: endOffset}).animate(animation), child: child, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+        }
+      }, T.BuildContextLAndAnimationLOfdoubleLAndAnimationLOfdoubleL__ToWidgetL());
+    }
+    generator(routeSettings) {
+      let match = this.matchRoute(null, routeSettings.name, {routeSettings: routeSettings});
+      return match.route;
+    }
+    printTree() {
+      this[_routeTree].printTree();
+    }
+  };
+  (router.Router.new = function() {
+    this[_routeTree] = new tree.RouteTree.new();
+    this[notFoundHandler] = null;
+    ;
+  }).prototype = router.Router.prototype;
+  dart.addTypeTests(router.Router);
+  dart.addTypeCaches(router.Router);
+  dart.setMethodSignature(router.Router, () => ({
+    __proto__: dart.getMethods(router.Router.__proto__),
+    define: dart.fnType(dart.void, [dart.legacy(core.String)], {handler: dart.legacy(common.Handler), transitionType: dart.legacy(common.TransitionType)}, {}),
+    match: dart.fnType(dart.legacy(tree.AppRouteMatch), [dart.legacy(core.String)]),
+    pop: dart.fnType(dart.void, [dart.legacy(framework.BuildContext)]),
+    navigateTo: dart.fnType(dart.legacy(async.Future), [dart.legacy(framework.BuildContext), dart.legacy(core.String)], {clearStack: dart.legacy(core.bool), replace: dart.legacy(core.bool), transition: dart.legacy(common.TransitionType), transitionBuilder: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)])), transitionDuration: dart.legacy(core.Duration)}, {}),
+    [_notFoundRoute]: dart.fnType(dart.legacy(navigator.Route$(core.Null)), [dart.legacy(framework.BuildContext), dart.legacy(core.String)]),
+    matchRoute: dart.fnType(dart.legacy(common.RouteMatch), [dart.legacy(framework.BuildContext), dart.legacy(core.String)], {routeSettings: dart.legacy(navigator.RouteSettings), transitionDuration: dart.legacy(core.Duration), transitionType: dart.legacy(common.TransitionType), transitionsBuilder: dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)]))}, {}),
+    [_standardTransitionsBuilder]: dart.fnType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(animation.Animation$(dart.legacy(core.double))), dart.legacy(framework.Widget)])), [dart.legacy(common.TransitionType)]),
+    generator: dart.fnType(dart.legacy(navigator.Route), [dart.legacy(navigator.RouteSettings)]),
+    printTree: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(router.Router, I[0]);
+  dart.setFieldSignature(router.Router, () => ({
+    __proto__: dart.getFields(router.Router.__proto__),
+    [_routeTree]: dart.finalFieldType(dart.legacy(tree.RouteTree)),
+    notFoundHandler: dart.fieldType(dart.legacy(common.Handler))
+  }));
+  dart.defineLazy(router.Router, {
+    /*router.Router.appRouter*/get appRouter() {
+      return new router.Router.new();
+    }
+  }, true);
+  dart.trackLibraries("packages/fluro/src/router.dart", {
+    "package:fluro/src/router.dart": router,
+    "package:fluro/fluro.dart": fluro
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["router.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../C:/packages/fluro/src/router.dart.lib.js"}');
+  // Exports:
+  return {
+    src__router: router,
+    fluro: fluro
+  };
+}));
+
+//# sourceMappingURL=router.dart.lib.js.map

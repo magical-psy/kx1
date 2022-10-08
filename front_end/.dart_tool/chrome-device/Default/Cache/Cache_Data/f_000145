@@ -1,0 +1,328 @@
+define(['dart_sdk', 'packages/fluro/src/router.dart', 'packages/the_gorgeous_login/config/routers/router_application.dart', 'packages/the_gorgeous_login/config/routers/routers.dart', 'packages/flutter/src/material/app.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/the_gorgeous_login/pages/login_page/pages/login_page.dart', 'packages/flutter/src/services/system_chrome.dart', 'packages/the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart', 'packages/provider/src/provider.dart', 'packages/provider/src/listenable_provider.dart', 'packages/nested/nested.dart'], (function load__packages__the_gorgeous_login__main_dart(dart_sdk, packages__fluro__src__router$46dart, packages__the_gorgeous_login__config__routers__router_application$46dart, packages__the_gorgeous_login__config__routers__routers$46dart, packages__flutter__src__material__app$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__the_gorgeous_login__pages__login_page__pages__login_page$46dart, packages__flutter__src__services__system_chrome$46dart, packages__the_gorgeous_login__pages__gamepannel_page__provider__shared_sources$46dart, packages__provider__src__provider$46dart, packages__provider__src__listenable_provider$46dart, packages__nested__nested$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const router$ = packages__fluro__src__router$46dart.src__router;
+  const router_application = packages__the_gorgeous_login__config__routers__router_application$46dart.config__routers__router_application;
+  const routers = packages__the_gorgeous_login__config__routers__routers$46dart.config__routers__routers;
+  const app = packages__flutter__src__material__app$46dart.src__material__app;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const binding = packages__flutter__src__widgets__widget_span$46dart.src__widgets__binding;
+  const login_page = packages__the_gorgeous_login__pages__login_page__pages__login_page$46dart.pages__login_page__pages__login_page;
+  const system_chrome = packages__flutter__src__services__system_chrome$46dart.src__services__system_chrome;
+  const shared_sources = packages__the_gorgeous_login__pages__gamepannel_page__provider__shared_sources$46dart.pages__gamepannel_page__provider__shared_sources;
+  const provider = packages__provider__src__provider$46dart.src__provider;
+  const change_notifier_provider = packages__provider__src__listenable_provider$46dart.src__change_notifier_provider;
+  const nested = packages__nested__nested$46dart.nested;
+  var main = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    LocaleL: () => (T.LocaleL = dart.constFn(dart.legacy(ui.Locale)))(),
+    NavigatorObserverL: () => (T.NavigatorObserverL = dart.constFn(dart.legacy(navigator.NavigatorObserver)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLToWidgetL: () => (T.BuildContextLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL()])))(),
+    BuildContextLToLWidgetL: () => (T.BuildContextLToLWidgetL = dart.constFn(dart.legacy(T.BuildContextLToWidgetL())))(),
+    DeviceOrientationL: () => (T.DeviceOrientationL = dart.constFn(dart.legacy(system_chrome.DeviceOrientation)))(),
+    JSArrayOfDeviceOrientationL: () => (T.JSArrayOfDeviceOrientationL = dart.constFn(_interceptors.JSArray$(T.DeviceOrientationL())))(),
+    GameDataL: () => (T.GameDataL = dart.constFn(dart.legacy(shared_sources.GameData)))(),
+    ChangeNotifierProviderOfGameDataL: () => (T.ChangeNotifierProviderOfGameDataL = dart.constFn(change_notifier_provider.ChangeNotifierProvider$(T.GameDataL())))(),
+    SingleChildWidgetL: () => (T.SingleChildWidgetL = dart.constFn(dart.legacy(nested.SingleChildWidget)))(),
+    JSArrayOfSingleChildWidgetL: () => (T.JSArrayOfSingleChildWidgetL = dart.constFn(_interceptors.JSArray$(T.SingleChildWidgetL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "debugShowCheckedModeBanner",
+        [_Location_column]: 7,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 7,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "home",
+        [_Location_column]: 7,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], T._LocationL());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 34,
+        [_Location_file]: "file:///C:/Users/psy/Desktop/kx2/front_end/lib/main.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Locale.prototype,
+        [Locale__countryCode]: "US",
+        [Locale_scriptCode]: null,
+        [Locale__languageCode]: "en"
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7], T.LocaleL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: app.ThemeMode.prototype,
+        [_name]: "ThemeMode.system",
+        index: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([], T.NavigatorObserverL());
+    },
+    get C10() {
+      return C[10] = dart.constMap(T.StringL(), T.BuildContextLToLWidgetL(), []);
+    },
+    get C13() {
+      return C[13] = dart.constList([], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 37,
+        [_Location_file]: "file:///C:/Users/psy/Desktop/kx2/front_end/lib/main.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: login_page.LoginPage.prototype,
+        [Widget__location]: C[12] || CT.C12,
+        [Widget_key]: null
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: app.MaterialApp.prototype,
+        [Widget__location]: C[1] || CT.C1,
+        [Widget_key]: null,
+        [MaterialApp_debugShowMaterialGrid]: false,
+        [MaterialApp_scrollBehavior]: null,
+        [MaterialApp_restorationScopeId]: null,
+        [MaterialApp_actions]: null,
+        [MaterialApp_shortcuts]: null,
+        [MaterialApp_debugShowCheckedModeBanner]: false,
+        [MaterialApp_showSemanticsDebugger]: false,
+        [MaterialApp_checkerboardOffscreenLayers]: false,
+        [MaterialApp_checkerboardRasterCacheImages]: false,
+        [MaterialApp_showPerformanceOverlay]: false,
+        [MaterialApp_supportedLocales]: C[6] || CT.C6,
+        [MaterialApp_localeResolutionCallback]: null,
+        [MaterialApp_localeListResolutionCallback]: null,
+        [MaterialApp_localizationsDelegates]: null,
+        [MaterialApp_locale]: null,
+        [MaterialApp_color]: null,
+        [MaterialApp_themeMode]: C[8] || CT.C8,
+        [MaterialApp_highContrastDarkTheme]: null,
+        [MaterialApp_highContrastTheme]: null,
+        [MaterialApp_darkTheme]: null,
+        [MaterialApp_theme]: null,
+        [MaterialApp_onGenerateTitle]: null,
+        [MaterialApp_title]: "remember to name it",
+        [MaterialApp_builder]: null,
+        [MaterialApp_backButtonDispatcher]: null,
+        [MaterialApp_routerDelegate]: null,
+        [MaterialApp_routeInformationParser]: null,
+        [MaterialApp_routeInformationProvider]: null,
+        [MaterialApp_navigatorObservers]: C[9] || CT.C9,
+        [MaterialApp_onUnknownRoute]: null,
+        [MaterialApp_onGenerateInitialRoutes]: null,
+        [MaterialApp_onGenerateRoute]: null,
+        [MaterialApp_initialRoute]: null,
+        [MaterialApp_routes]: C[10] || CT.C10,
+        [MaterialApp_home]: C[11] || CT.C11,
+        [MaterialApp_scaffoldMessengerKey]: null,
+        [MaterialApp_navigatorKey]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 48,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 42,
+        [_Location_line]: 21,
+        [_Location_file]: "file:///C:/Users/psy/Desktop/kx2/front_end/lib/main.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 22,
+        [_Location_file]: "file:///C:/Users/psy/Desktop/kx2/front_end/lib/main.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "providers",
+        [_Location_column]: 7,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 5,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/psy/Desktop/kx2/front_end/lib/main.dart"
+      });
+    }
+  }, false);
+  var C = Array(22).fill(void 0);
+  var I = ["package:the_gorgeous_login/main.dart"];
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var MaterialApp_debugShowMaterialGrid = dart.privateName(app, "MaterialApp.debugShowMaterialGrid");
+  var MaterialApp_scrollBehavior = dart.privateName(app, "MaterialApp.scrollBehavior");
+  var MaterialApp_restorationScopeId = dart.privateName(app, "MaterialApp.restorationScopeId");
+  var MaterialApp_actions = dart.privateName(app, "MaterialApp.actions");
+  var MaterialApp_shortcuts = dart.privateName(app, "MaterialApp.shortcuts");
+  var MaterialApp_debugShowCheckedModeBanner = dart.privateName(app, "MaterialApp.debugShowCheckedModeBanner");
+  var MaterialApp_showSemanticsDebugger = dart.privateName(app, "MaterialApp.showSemanticsDebugger");
+  var MaterialApp_checkerboardOffscreenLayers = dart.privateName(app, "MaterialApp.checkerboardOffscreenLayers");
+  var MaterialApp_checkerboardRasterCacheImages = dart.privateName(app, "MaterialApp.checkerboardRasterCacheImages");
+  var MaterialApp_showPerformanceOverlay = dart.privateName(app, "MaterialApp.showPerformanceOverlay");
+  var Locale__countryCode = dart.privateName(ui, "Locale._countryCode");
+  var Locale_scriptCode = dart.privateName(ui, "Locale.scriptCode");
+  var Locale__languageCode = dart.privateName(ui, "Locale._languageCode");
+  var MaterialApp_supportedLocales = dart.privateName(app, "MaterialApp.supportedLocales");
+  var MaterialApp_localeResolutionCallback = dart.privateName(app, "MaterialApp.localeResolutionCallback");
+  var MaterialApp_localeListResolutionCallback = dart.privateName(app, "MaterialApp.localeListResolutionCallback");
+  var MaterialApp_localizationsDelegates = dart.privateName(app, "MaterialApp.localizationsDelegates");
+  var MaterialApp_locale = dart.privateName(app, "MaterialApp.locale");
+  var MaterialApp_color = dart.privateName(app, "MaterialApp.color");
+  var _name = dart.privateName(app, "_name");
+  var MaterialApp_themeMode = dart.privateName(app, "MaterialApp.themeMode");
+  var MaterialApp_highContrastDarkTheme = dart.privateName(app, "MaterialApp.highContrastDarkTheme");
+  var MaterialApp_highContrastTheme = dart.privateName(app, "MaterialApp.highContrastTheme");
+  var MaterialApp_darkTheme = dart.privateName(app, "MaterialApp.darkTheme");
+  var MaterialApp_theme = dart.privateName(app, "MaterialApp.theme");
+  var MaterialApp_onGenerateTitle = dart.privateName(app, "MaterialApp.onGenerateTitle");
+  var MaterialApp_title = dart.privateName(app, "MaterialApp.title");
+  var MaterialApp_builder = dart.privateName(app, "MaterialApp.builder");
+  var MaterialApp_backButtonDispatcher = dart.privateName(app, "MaterialApp.backButtonDispatcher");
+  var MaterialApp_routerDelegate = dart.privateName(app, "MaterialApp.routerDelegate");
+  var MaterialApp_routeInformationParser = dart.privateName(app, "MaterialApp.routeInformationParser");
+  var MaterialApp_routeInformationProvider = dart.privateName(app, "MaterialApp.routeInformationProvider");
+  var MaterialApp_navigatorObservers = dart.privateName(app, "MaterialApp.navigatorObservers");
+  var MaterialApp_onUnknownRoute = dart.privateName(app, "MaterialApp.onUnknownRoute");
+  var MaterialApp_onGenerateInitialRoutes = dart.privateName(app, "MaterialApp.onGenerateInitialRoutes");
+  var MaterialApp_onGenerateRoute = dart.privateName(app, "MaterialApp.onGenerateRoute");
+  var MaterialApp_initialRoute = dart.privateName(app, "MaterialApp.initialRoute");
+  var MaterialApp_routes = dart.privateName(app, "MaterialApp.routes");
+  var MaterialApp_home = dart.privateName(app, "MaterialApp.home");
+  var MaterialApp_scaffoldMessengerKey = dart.privateName(app, "MaterialApp.scaffoldMessengerKey");
+  var MaterialApp_navigatorKey = dart.privateName(app, "MaterialApp.navigatorKey");
+  main.MyApp = class MyApp extends framework.StatelessWidget {
+    build(context) {
+      let router = new router$.Router.new();
+      router_application.ApplicationRouter.router = router;
+      routers.Routes.configureRoutes(router);
+      return C[0] || CT.C0;
+    }
+  };
+  (main.MyApp.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    main.MyApp.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = main.MyApp.prototype;
+  dart.addTypeTests(main.MyApp);
+  dart.addTypeCaches(main.MyApp);
+  dart.setMethodSignature(main.MyApp, () => ({
+    __proto__: dart.getMethods(main.MyApp.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(main.MyApp, I[0]);
+  main.main = function main$() {
+    binding.WidgetsFlutterBinding.ensureInitialized();
+    system_chrome.SystemChrome.setPreferredOrientations(T.JSArrayOfDeviceOrientationL().of([system_chrome.DeviceOrientation.portraitUp, system_chrome.DeviceOrientation.portraitDown]));
+    let gamedata = new shared_sources.GameData.new();
+    binding.runApp(new provider.MultiProvider.new({providers: T.JSArrayOfSingleChildWidgetL().of([new (T.ChangeNotifierProviderOfGameDataL()).value({value: gamedata, $creationLocationd_0dea112b090073317d4: C[14] || CT.C14})]), child: new main.MyApp.new({$creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}));
+  };
+  dart.trackLibraries("packages/the_gorgeous_login/main.dart", {
+    "package:the_gorgeous_login/main.dart": main
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["main.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UA4B4B;AAClB,mBAAe;AACY,MAAf,8CAAS,MAAM;AAEH,MAAvB,+BAAgB,MAAM;AAC7B;IAKF;;;;;;EACF;;;;;;;;;AA7B2C,IAAnB;AAIpB,IAHW,oDAA4C,oCACrC,4CACA;AAGd,mBAAW;AAOhB,IALD,eACE,2CACa,oCAAwB,0DAAa,QAAQ,sEACjD;EAGb","file":"../../../../../../packages/the_gorgeous_login/main.dart.lib.js"}');
+  // Exports:
+  return {
+    main: main
+  };
+}));
+
+//# sourceMappingURL=main.dart.lib.js.map

@@ -1,0 +1,422 @@
+define(['dart_sdk', 'packages/fluro/src/common.dart'], (function load__packages__fluro__src__tree_dart(dart_sdk, packages__fluro__src__common$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const common = packages__fluro__src__common$46dart.src__common;
+  var tree = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $addAll = dartx.addAll;
+  var $add = dartx.add;
+  var $startsWith = dartx.startsWith;
+  var $substring = dartx.substring;
+  var $split = dartx.split;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $contains = dartx.contains;
+  var $_set = dartx._set;
+  var $values = dartx.values;
+  var $toList = dartx.toList;
+  var $first = dartx.first;
+  var $replaceAll = dartx.replaceAll;
+  var $containsKey = dartx.containsKey;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    RouteTreeNodeTypeL: () => (T.RouteTreeNodeTypeL = dart.constFn(dart.legacy(tree.RouteTreeNodeType)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ListOfStringL: () => (T.ListOfStringL = dart.constFn(core.List$(T.StringL())))(),
+    ListLOfStringL: () => (T.ListLOfStringL = dart.constFn(dart.legacy(T.ListOfStringL())))(),
+    IdentityMapOfStringL$ListLOfStringL: () => (T.IdentityMapOfStringL$ListLOfStringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.ListLOfStringL())))(),
+    AppRouteL: () => (T.AppRouteL = dart.constFn(dart.legacy(common.AppRoute)))(),
+    JSArrayOfAppRouteL: () => (T.JSArrayOfAppRouteL = dart.constFn(_interceptors.JSArray$(T.AppRouteL())))(),
+    RouteTreeNodeL: () => (T.RouteTreeNodeL = dart.constFn(dart.legacy(tree.RouteTreeNode)))(),
+    JSArrayOfRouteTreeNodeL: () => (T.JSArrayOfRouteTreeNodeL = dart.constFn(_interceptors.JSArray$(T.RouteTreeNodeL())))(),
+    JSArrayOfStringL: () => (T.JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(T.StringL())))(),
+    RouteTreeNodeMatchL: () => (T.RouteTreeNodeMatchL = dart.constFn(dart.legacy(tree.RouteTreeNodeMatch)))(),
+    LinkedMapOfRouteTreeNodeL$RouteTreeNodeMatchL: () => (T.LinkedMapOfRouteTreeNodeL$RouteTreeNodeMatchL = dart.constFn(_js_helper.LinkedMap$(T.RouteTreeNodeL(), T.RouteTreeNodeMatchL())))(),
+    LinkedMapOfStringL$ListLOfStringL: () => (T.LinkedMapOfStringL$ListLOfStringL = dart.constFn(_js_helper.LinkedMap$(T.StringL(), T.ListLOfStringL())))(),
+    StringLToStringL: () => (T.StringLToStringL = dart.constFn(dart.fnType(T.StringL(), [T.StringL()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: tree.RouteTreeNodeType.prototype,
+        [_name$]: "RouteTreeNodeType.component",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: tree.RouteTreeNodeType.prototype,
+        [_name$]: "RouteTreeNodeType.parameter",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T.RouteTreeNodeTypeL());
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = ["package:fluro/src/tree.dart"];
+  var _name$ = dart.privateName(tree, "_name");
+  tree.RouteTreeNodeType = class RouteTreeNodeType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (tree.RouteTreeNodeType.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = tree.RouteTreeNodeType.prototype;
+  dart.addTypeTests(tree.RouteTreeNodeType);
+  dart.addTypeCaches(tree.RouteTreeNodeType);
+  dart.setMethodSignature(tree.RouteTreeNodeType, () => ({
+    __proto__: dart.getMethods(tree.RouteTreeNodeType.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(tree.RouteTreeNodeType, I[0]);
+  dart.setFieldSignature(tree.RouteTreeNodeType, () => ({
+    __proto__: dart.getFields(tree.RouteTreeNodeType.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(tree.RouteTreeNodeType, ['toString']);
+  tree.RouteTreeNodeType.component = C[0] || CT.C0;
+  tree.RouteTreeNodeType.parameter = C[1] || CT.C1;
+  tree.RouteTreeNodeType.values = C[2] || CT.C2;
+  var route$ = dart.privateName(tree, "AppRouteMatch.route");
+  var parameters = dart.privateName(tree, "AppRouteMatch.parameters");
+  tree.AppRouteMatch = class AppRouteMatch extends core.Object {
+    get route() {
+      return this[route$];
+    }
+    set route(value) {
+      this[route$] = value;
+    }
+    get parameters() {
+      return this[parameters];
+    }
+    set parameters(value) {
+      this[parameters] = value;
+    }
+  };
+  (tree.AppRouteMatch.new = function(route) {
+    this[parameters] = new (T.IdentityMapOfStringL$ListLOfStringL()).new();
+    this[route$] = route;
+    ;
+  }).prototype = tree.AppRouteMatch.prototype;
+  dart.addTypeTests(tree.AppRouteMatch);
+  dart.addTypeCaches(tree.AppRouteMatch);
+  dart.setLibraryUri(tree.AppRouteMatch, I[0]);
+  dart.setFieldSignature(tree.AppRouteMatch, () => ({
+    __proto__: dart.getFields(tree.AppRouteMatch.__proto__),
+    route: dart.fieldType(dart.legacy(common.AppRoute)),
+    parameters: dart.fieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.List$(dart.legacy(core.String))))))
+  }));
+  var node$ = dart.privateName(tree, "RouteTreeNodeMatch.node");
+  var parameters$ = dart.privateName(tree, "RouteTreeNodeMatch.parameters");
+  tree.RouteTreeNodeMatch = class RouteTreeNodeMatch extends core.Object {
+    get node() {
+      return this[node$];
+    }
+    set node(value) {
+      this[node$] = value;
+    }
+    get parameters() {
+      return this[parameters$];
+    }
+    set parameters(value) {
+      this[parameters$] = value;
+    }
+  };
+  (tree.RouteTreeNodeMatch.new = function(node) {
+    this[parameters$] = new (T.IdentityMapOfStringL$ListLOfStringL()).new();
+    this[node$] = node;
+    ;
+  }).prototype = tree.RouteTreeNodeMatch.prototype;
+  (tree.RouteTreeNodeMatch.fromMatch = function(match, node) {
+    this[parameters$] = new (T.IdentityMapOfStringL$ListLOfStringL()).new();
+    this[node$] = node;
+    this.parameters = new (T.IdentityMapOfStringL$ListLOfStringL()).new();
+    if (match != null) {
+      this.parameters[$addAll](match.parameters);
+    }
+  }).prototype = tree.RouteTreeNodeMatch.prototype;
+  dart.addTypeTests(tree.RouteTreeNodeMatch);
+  dart.addTypeCaches(tree.RouteTreeNodeMatch);
+  dart.setLibraryUri(tree.RouteTreeNodeMatch, I[0]);
+  dart.setFieldSignature(tree.RouteTreeNodeMatch, () => ({
+    __proto__: dart.getFields(tree.RouteTreeNodeMatch.__proto__),
+    node: dart.fieldType(dart.legacy(tree.RouteTreeNode)),
+    parameters: dart.fieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.List$(dart.legacy(core.String))))))
+  }));
+  var part$ = dart.privateName(tree, "RouteTreeNode.part");
+  var type$ = dart.privateName(tree, "RouteTreeNode.type");
+  var routes = dart.privateName(tree, "RouteTreeNode.routes");
+  var nodes = dart.privateName(tree, "RouteTreeNode.nodes");
+  var parent = dart.privateName(tree, "RouteTreeNode.parent");
+  tree.RouteTreeNode = class RouteTreeNode extends core.Object {
+    get part() {
+      return this[part$];
+    }
+    set part(value) {
+      this[part$] = value;
+    }
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      this[type$] = value;
+    }
+    get routes() {
+      return this[routes];
+    }
+    set routes(value) {
+      this[routes] = value;
+    }
+    get nodes() {
+      return this[nodes];
+    }
+    set nodes(value) {
+      this[nodes] = value;
+    }
+    get parent() {
+      return this[parent];
+    }
+    set parent(value) {
+      this[parent] = value;
+    }
+    isParameter() {
+      return this.type == tree.RouteTreeNodeType.parameter;
+    }
+  };
+  (tree.RouteTreeNode.new = function(part, type) {
+    this[routes] = T.JSArrayOfAppRouteL().of([]);
+    this[nodes] = T.JSArrayOfRouteTreeNodeL().of([]);
+    this[parent] = null;
+    this[part$] = part;
+    this[type$] = type;
+    ;
+  }).prototype = tree.RouteTreeNode.prototype;
+  dart.addTypeTests(tree.RouteTreeNode);
+  dart.addTypeCaches(tree.RouteTreeNode);
+  dart.setMethodSignature(tree.RouteTreeNode, () => ({
+    __proto__: dart.getMethods(tree.RouteTreeNode.__proto__),
+    isParameter: dart.fnType(dart.legacy(core.bool), [])
+  }));
+  dart.setLibraryUri(tree.RouteTreeNode, I[0]);
+  dart.setFieldSignature(tree.RouteTreeNode, () => ({
+    __proto__: dart.getFields(tree.RouteTreeNode.__proto__),
+    part: dart.fieldType(dart.legacy(core.String)),
+    type: dart.fieldType(dart.legacy(tree.RouteTreeNodeType)),
+    routes: dart.fieldType(dart.legacy(core.List$(dart.legacy(common.AppRoute)))),
+    nodes: dart.fieldType(dart.legacy(core.List$(dart.legacy(tree.RouteTreeNode)))),
+    parent: dart.fieldType(dart.legacy(tree.RouteTreeNode))
+  }));
+  var _nodes = dart.privateName(tree, "_nodes");
+  var _hasDefaultRoute = dart.privateName(tree, "_hasDefaultRoute");
+  var _nodeForComponent = dart.privateName(tree, "_nodeForComponent");
+  var _typeForComponent = dart.privateName(tree, "_typeForComponent");
+  var _printSubTree = dart.privateName(tree, "_printSubTree");
+  var _isParameterComponent = dart.privateName(tree, "_isParameterComponent");
+  tree.RouteTree = class RouteTree extends core.Object {
+    addRoute(route) {
+      let path = route.route;
+      if (path === "/") {
+        if (dart.test(this[_hasDefaultRoute])) {
+          dart.throw("Default route was already defined");
+        }
+        let node = new tree.RouteTreeNode.new(path, tree.RouteTreeNodeType.component);
+        node.routes = T.JSArrayOfAppRouteL().of([route]);
+        this[_nodes][$add](node);
+        this[_hasDefaultRoute] = true;
+        return;
+      }
+      if (path[$startsWith]("/")) {
+        path = path[$substring](1);
+      }
+      let pathComponents = path[$split]("/");
+      let parent = null;
+      for (let i = 0; i < dart.notNull(pathComponents[$length]); i = i + 1) {
+        let component = pathComponents[$_get](i);
+        let node = this[_nodeForComponent](component, parent);
+        if (node == null) {
+          let type = this[_typeForComponent](component);
+          node = new tree.RouteTreeNode.new(component, type);
+          node.parent = parent;
+          if (parent == null) {
+            this[_nodes][$add](node);
+          } else {
+            parent.nodes[$add](node);
+          }
+        }
+        if (i === dart.notNull(pathComponents[$length]) - 1) {
+          if (node.routes == null) {
+            node.routes = T.JSArrayOfAppRouteL().of([route]);
+          } else {
+            node.routes[$add](route);
+          }
+        }
+        parent = node;
+      }
+    }
+    matchRoute(path) {
+      let usePath = path;
+      if (usePath[$startsWith]("/")) {
+        usePath = path[$substring](1);
+      }
+      let components = usePath[$split]("/");
+      if (path === "/") {
+        components = T.JSArrayOfStringL().of(["/"]);
+      }
+      let nodeMatches = new (T.LinkedMapOfRouteTreeNodeL$RouteTreeNodeMatchL()).new();
+      let nodesToCheck = this[_nodes];
+      for (let checkComponent of components) {
+        let currentMatches = new (T.LinkedMapOfRouteTreeNodeL$RouteTreeNodeMatchL()).new();
+        let nextNodes = T.JSArrayOfRouteTreeNodeL().of([]);
+        for (let node of nodesToCheck) {
+          let pathPart = checkComponent;
+          let queryMap = null;
+          if (checkComponent[$contains]("?")) {
+            let splitParam = checkComponent[$split]("?");
+            pathPart = splitParam[$_get](0);
+            queryMap = this.parseQueryString(splitParam[$_get](1));
+          }
+          let isMatch = node.part == pathPart || dart.test(node.isParameter());
+          if (isMatch) {
+            let parentMatch = nodeMatches[$_get](node.parent);
+            let match = new tree.RouteTreeNodeMatch.fromMatch(parentMatch, node);
+            if (dart.test(node.isParameter())) {
+              let paramKey = node.part[$substring](1);
+              match.parameters[$_set](paramKey, T.JSArrayOfStringL().of([pathPart]));
+            }
+            if (queryMap != null) {
+              match.parameters[$addAll](queryMap);
+            }
+            currentMatches[$_set](node, match);
+            if (node.nodes != null) {
+              nextNodes[$addAll](node.nodes);
+            }
+          }
+        }
+        nodeMatches = currentMatches;
+        nodesToCheck = nextNodes;
+        if (currentMatches[$values][$length] === 0) {
+          return null;
+        }
+      }
+      let matches = nodeMatches[$values][$toList]();
+      if (dart.notNull(matches[$length]) > 0) {
+        let match = matches[$first];
+        let nodeToUse = match.node;
+        if (nodeToUse != null && nodeToUse.routes != null && dart.notNull(nodeToUse.routes[$length]) > 0) {
+          let routes = nodeToUse.routes;
+          let routeMatch = new tree.AppRouteMatch.new(routes[$_get](0));
+          routeMatch.parameters = match.parameters;
+          return routeMatch;
+        }
+      }
+      return null;
+    }
+    printTree() {
+      this[_printSubTree]();
+    }
+    [_printSubTree](opts) {
+      let parent = opts && 'parent' in opts ? opts.parent : null;
+      let level = opts && 'level' in opts ? opts.level : 0;
+      let nodes = parent != null ? parent.nodes : this[_nodes];
+      for (let node of nodes) {
+        let indent = "";
+        for (let i = 0; i < dart.notNull(level); i = i + 1) {
+          indent = indent + "    ";
+        }
+        core.print(indent + dart.str(node.part) + ": total routes=" + dart.str(node.routes[$length]));
+        if (node.nodes != null && dart.notNull(node.nodes[$length]) > 0) {
+          this[_printSubTree]({parent: node, level: dart.notNull(level) + 1});
+        }
+      }
+    }
+    [_nodeForComponent](component, parent) {
+      let nodes = this[_nodes];
+      if (parent != null) {
+        nodes = parent.nodes;
+      }
+      for (let node of nodes) {
+        if (node.part == component) {
+          return node;
+        }
+      }
+      return null;
+    }
+    [_typeForComponent](component) {
+      let type = tree.RouteTreeNodeType.component;
+      if (dart.test(this[_isParameterComponent](component))) {
+        type = tree.RouteTreeNodeType.parameter;
+      }
+      return type;
+    }
+    [_isParameterComponent](component) {
+      return component[$startsWith](":");
+    }
+    parseQueryString(query) {
+      let search = core.RegExp.new("([^&=]+)=?([^&]*)");
+      let params = new (T.LinkedMapOfStringL$ListLOfStringL()).new();
+      if (query[$startsWith]("?")) query = query[$substring](1);
+      function decode(s) {
+        return core.Uri.decodeComponent(s[$replaceAll]("+", " "));
+      }
+      dart.fn(decode, T.StringLToStringL());
+      for (let match of search.allMatches(query)) {
+        let key = decode(match.group(1));
+        let value = decode(match.group(2));
+        if (dart.test(params[$containsKey](key))) {
+          params[$_get](key)[$add](value);
+        } else {
+          params[$_set](key, T.JSArrayOfStringL().of([value]));
+        }
+      }
+      return params;
+    }
+  };
+  (tree.RouteTree.new = function() {
+    this[_nodes] = T.JSArrayOfRouteTreeNodeL().of([]);
+    this[_hasDefaultRoute] = false;
+    ;
+  }).prototype = tree.RouteTree.prototype;
+  dart.addTypeTests(tree.RouteTree);
+  dart.addTypeCaches(tree.RouteTree);
+  dart.setMethodSignature(tree.RouteTree, () => ({
+    __proto__: dart.getMethods(tree.RouteTree.__proto__),
+    addRoute: dart.fnType(dart.void, [dart.legacy(common.AppRoute)]),
+    matchRoute: dart.fnType(dart.legacy(tree.AppRouteMatch), [dart.legacy(core.String)]),
+    printTree: dart.fnType(dart.void, []),
+    [_printSubTree]: dart.fnType(dart.void, [], {level: dart.legacy(core.int), parent: dart.legacy(tree.RouteTreeNode)}, {}),
+    [_nodeForComponent]: dart.fnType(dart.legacy(tree.RouteTreeNode), [dart.legacy(core.String), dart.legacy(tree.RouteTreeNode)]),
+    [_typeForComponent]: dart.fnType(dart.legacy(tree.RouteTreeNodeType), [dart.legacy(core.String)]),
+    [_isParameterComponent]: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.String)]),
+    parseQueryString: dart.fnType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.List$(dart.legacy(core.String))))), [dart.legacy(core.String)])
+  }));
+  dart.setLibraryUri(tree.RouteTree, I[0]);
+  dart.setFieldSignature(tree.RouteTree, () => ({
+    __proto__: dart.getFields(tree.RouteTree.__proto__),
+    [_nodes]: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(tree.RouteTreeNode)))),
+    [_hasDefaultRoute]: dart.fieldType(dart.legacy(core.bool))
+  }));
+  dart.trackLibraries("packages/fluro/src/tree.dart", {
+    "package:fluro/src/tree.dart": tree
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["tree.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../C:/packages/fluro/src/tree.dart.lib.js"}');
+  // Exports:
+  return {
+    src__tree: tree
+  };
+}));
+
+//# sourceMappingURL=tree.dart.lib.js.map
