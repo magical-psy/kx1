@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
 
 class Pannel extends StatefulWidget {
   int position; // position 0 means the upper mat and the possition 1

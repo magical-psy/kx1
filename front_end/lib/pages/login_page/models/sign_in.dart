@@ -171,7 +171,7 @@ class _SignInState extends State<SignIn> {
             padding: const EdgeInsets.only(top: 10.0),
             child: TextButton(
                 onPressed: () {
-                  ApplicationRouter.router.navigateTo(context, '/gamepannel');
+                  ApplicationRouter.router.navigateTo(context, '/mode');
                 },
                 child: const Text(
                   'play without login',

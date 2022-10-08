@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
-import 'package:the_gorgeous_login/pages/gamepannel_page/moduels/pannel.dart';
-import 'package:the_gorgeous_login/pages/gamepannel_page/provider/shared_sources.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/moduels/pannel.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
 
 class GamepannelPage extends StatefulWidget {
   const GamepannelPage({Key key}) : super(key: key);

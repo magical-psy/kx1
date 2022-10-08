@@ -6,6 +6,7 @@ class Routes {
   static String root = '/';
   static String loginPage = '/login';
   static String gamepannelPage = '/gamepannel';
+  static String mode = '/mode';
 
   static void configureRoutes(fluro.Router router) {
     router.notFoundHandler = new fluro.Handler(
@@ -16,5 +17,6 @@ class Routes {
     // 创建pageRoute
     router.define(loginPage, handler: loginPageHandler);
     router.define(gamepannelPage, handler: gamepannelHandler);
+    router.define(mode, handler: modeHandler);
   }
 }

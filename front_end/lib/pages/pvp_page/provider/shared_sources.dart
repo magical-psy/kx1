@@ -14,6 +14,14 @@ class GameData with ChangeNotifier {
   int get getNum => randomNum;
   List<int> get upMat => updata;
   List<int> get downMat => downdata;
+  void reset() {
+    turn = 0;
+    uppoint = 0;
+    downpoint = 0;
+    randomNum = 0;
+    updata = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    downdata = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  }
 
   void getnum() {
     randomNum = Random().nextInt(6) + 1;
@@ -88,16 +96,27 @@ class GameData with ChangeNotifier {
       if (updata[i] == 0) check2 = 1;
     }
     if (check1 == 0 || check2 == 0) {
+      reset();
       turn = 2;
       showCupertinoDialog(
           context: context,
           builder: (context) {
+            String result;
+            if (uppoint > downpoint) {
+              result = "game over\nplayer1 win";
+            }
+            if (uppoint == downpoint) {
+              result = "game over\nend in draw";
+            }
+            if (uppoint > downpoint) {
+              result = "game over\nplayer2 win";
+            }
             return CupertinoAlertDialog(
               title: Text('hint'),
-              content: Text('are you sure about it'),
+              content: Text(result),
               actions: <Widget>[
                 CupertinoDialogAction(
-                  child: Text('cancel'),
+                  child: Text('One more round'),
                   onPressed: () {
                     Navigator.of(context).pop('cancel');
                   },
