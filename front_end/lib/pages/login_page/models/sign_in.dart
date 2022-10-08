@@ -161,8 +161,11 @@ class _SignInState extends State<SignIn> {
                           fontFamily: 'WorkSansBold'),
                     ),
                   ),
-                  onPressed: () => CustomSnackBar(
-                      context, const Text('Login button pressed')),
+                  onPressed: () {
+                    ApplicationRouter.router.navigateTo(context, '/loginmode');
+
+                    CustomSnackBar(context, const Text('Login button pressed'));
+                  },
                 ),
               )
             ],
@@ -189,6 +192,7 @@ class _SignInState extends State<SignIn> {
 
   void _toggleSignInButton() {
     CustomSnackBar(context, const Text('Login button pressed'));
+    ApplicationRouter.router.navigateTo(context, '/loginmode');
   }
 
   void _toggleLogin() {

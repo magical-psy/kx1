@@ -7,6 +7,8 @@ class Routes {
   static String loginPage = '/login';
   static String gamepannelPage = '/gamepannel';
   static String mode = '/mode';
+  static String loginmode = '/loginmode';
+  static String pve = '/pve';
 
   static void configureRoutes(fluro.Router router) {
     router.notFoundHandler = new fluro.Handler(
@@ -18,5 +20,7 @@ class Routes {
     router.define(loginPage, handler: loginPageHandler);
     router.define(gamepannelPage, handler: gamepannelHandler);
     router.define(mode, handler: modeHandler);
+    router.define(loginmode, handler: loinmodeHandler);
+    router.define(pve, handler: pveHandler);
   }
 }

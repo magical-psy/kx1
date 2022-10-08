@@ -7,20 +7,20 @@ import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/moduels/pannel.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
 
-class GamepannelPage extends StatefulWidget {
-  const GamepannelPage({Key key}) : super(key: key);
+class PvEPage extends StatefulWidget {
+  const PvEPage({Key key}) : super(key: key);
   @override
-  _GamepannelPageState createState() => _GamepannelPageState();
+  _PvEPageState createState() => _PvEPageState();
 }
 
-class _GamepannelPageState extends State<GamepannelPage> {
+class _PvEPageState extends State<PvEPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             elevation: 2.0,
             backgroundColor: Colors.white,
-            title: Text('undetermined',
+            title: Text('pvepage',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
