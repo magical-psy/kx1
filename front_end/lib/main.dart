@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/pages/login_page/pages/login_page.dart';
 import 'package:fluro/fluro.dart' as fluro;
-import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/provider/PvPprovider.dart';
 import 'config/routers/router_application.dart';
 import 'config/routers/routers.dart';
 
@@ -14,7 +14,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]);
 
-  final gamedata = GameData();
+  final gamedata = PvPData();
 
   runApp(
     MultiProvider(

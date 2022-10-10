@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/provider/PvPprovider.dart';
 
 class Pannel extends StatefulWidget {
   int position; // position 0 means the upper mat and the possition 1
@@ -24,7 +24,7 @@ class _PannelState extends State<Pannel> {
         crossAxisSpacing: MediaQuery.of(context).size.width * 1 / 8,
       ),
       itemBuilder: (context, index) {
-        final data = Provider.of<GameData>(context, listen: true);
+        final data = Provider.of<PvPData>(context, listen: true);
         return DragTarget<int>(
           builder: (BuildContext context, List<dynamic> candidateData,
               List<dynamic> rejectedData) {
@@ -92,7 +92,7 @@ class NumSource extends StatefulWidget {
 class _NumSourceState extends State<NumSource> {
   @override
   Widget build(BuildContext context) {
-    final gamedata = Provider.of<GameData>(context, listen: true);
+    final gamedata = Provider.of<PvPData>(context, listen: true);
     if (gamedata.turn == 2) {
       return Container(
         height: MediaQuery.of(context).size.width * 1 / 7,

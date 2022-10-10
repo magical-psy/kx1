@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/moduels/pannel.dart';
-import 'package:the_gorgeous_login/pages/pvp_page/provider/shared_sources.dart';
+import 'package:the_gorgeous_login/pages/pvp_page/provider/PvPprovider.dart';
 
 class GamepannelPage extends StatefulWidget {
   const GamepannelPage({Key key}) : super(key: key);
@@ -74,7 +74,7 @@ class _GamepannelPageState extends State<GamepannelPage> {
               ),
               child: Column(
                 children: [
-                  Container(child: Consumer<GameData>(
+                  Container(child: Consumer<PvPData>(
                     builder: (context, gamedata, _) {
                       return Text(
                         gamedata.turn == 0 ? "Opponent's Round" : "Your Turn",
@@ -104,7 +104,7 @@ class _GamepannelPageState extends State<GamepannelPage> {
                             fit: BoxFit.fill,
                             image: const AssetImage('assets/img/p1.JPG')),
                         Text("くりやま みらい"),
-                        Consumer<GameData>(builder: (context, gamedata, _) {
+                        Consumer<PvPData>(builder: (context, gamedata, _) {
                           return Text("point:\n${gamedata.uppoint}");
                         })
                       ],
@@ -119,7 +119,7 @@ class _GamepannelPageState extends State<GamepannelPage> {
                             fit: BoxFit.fill,
                             image: const AssetImage('assets/img/p2.JPG')),
                         Text("Princess Zelda"),
-                        Consumer<GameData>(builder: (context, gamedata, _) {
+                        Consumer<PvPData>(builder: (context, gamedata, _) {
                           return Text("point:\n${gamedata.downpoint}");
                         })
                       ],
@@ -168,7 +168,7 @@ class _get_moveState extends State<get_move> {
         OutlinedButton(
             child: Text("get a redom num"),
             onPressed: () {
-              final data = Provider.of<GameData>(context, listen: false);
+              final data = Provider.of<PvPData>(context, listen: false);
               data.getnum();
             }),
         NumSource()

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class GameData with ChangeNotifier {
+class PvPData with ChangeNotifier {
   int turn = 0;
   int uppoint = 0;
   int downpoint = 0;
