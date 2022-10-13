@@ -13,12 +13,12 @@ import java.util.Random;
 @SpringBootTest
 class XiaoYaoShaiApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
-
-    @Autowired
-    private UserMapper userMapper;
+//    @Test
+//    void contextLoads() {
+//    }
+//
+//    @Autowired
+//    private UserMapper userMapper;
 
 //    @Test
 //    void testInsert(){
@@ -27,7 +27,7 @@ class XiaoYaoShaiApplicationTests {
 //    }
 //    @Autowired(required = false)
 //    private RedisUtil redisUtil;
-//
+//he's
 //    @Test
 //    void getName(){
 //        redisUtil.set("2287511565@qq.com","5654");
