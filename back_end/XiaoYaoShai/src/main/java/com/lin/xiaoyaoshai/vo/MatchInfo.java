@@ -3,9 +3,10 @@ package com.lin.xiaoyaoshai.vo;
 import lombok.Data;
 
 @Data
-public class MatchInfo {
+public class MatchInfoVO {
 
-    private String userId1;
+    private String rivalId;
 
-    private String userId2;
+    private String oder;
+
 }
