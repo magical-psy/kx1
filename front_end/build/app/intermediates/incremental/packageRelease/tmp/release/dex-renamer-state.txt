@@ -1,4 +1,0 @@
-#Thu Oct 13 01:05:40 CST 2022
-base.0=C\:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
