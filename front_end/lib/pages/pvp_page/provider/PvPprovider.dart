@@ -1,10 +1,11 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PvPData with ChangeNotifier {
   int turn = 0;
+  int back = 0;
+  int remember = 0;
   int uppoint = 0;
   int downpoint = 0;
   int randomNum = 0;
@@ -16,14 +17,17 @@ class PvPData with ChangeNotifier {
   List<int> get downMat => downdata;
   void reset() {
     turn = 0;
+    remember = 0;
     uppoint = 0;
     downpoint = 0;
     randomNum = 0;
     updata = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     downdata = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    notifyListeners();
   }
 
   void getnum() {
+    remember = turn;
     randomNum = Random().nextInt(6) + 1;
     notifyListeners();
     print(randomNum);
@@ -45,7 +49,7 @@ class PvPData with ChangeNotifier {
         }
       }
       //the last two
-      else if (mat[1] == mat[2]) {
+      else if (count[1] == count[2]) {
         point += (count[0] + 4 * count[1]);
       }
       //just three nums
@@ -96,19 +100,18 @@ class PvPData with ChangeNotifier {
       if (updata[i] == 0) check2 = 1;
     }
     if (check1 == 0 || check2 == 0) {
-      reset();
-      turn = 2;
       showCupertinoDialog(
           context: context,
           builder: (context) {
             String result;
+            print(uppoint + downpoint);
             if (uppoint > downpoint) {
               result = "game over\nplayer1 win";
             }
             if (uppoint == downpoint) {
               result = "game over\nend in draw";
             }
-            if (uppoint > downpoint) {
+            if (uppoint < downpoint) {
               result = "game over\nplayer2 win";
             }
             return CupertinoAlertDialog(
@@ -125,11 +128,15 @@ class PvPData with ChangeNotifier {
                   child: Text('leave'),
                   onPressed: () {
                     Navigator.of(context).pop();
+                    back = 1;
                   },
                 ),
               ],
             );
           });
+      Future.delayed(Duration(milliseconds: 2000), () {
+        reset();
+      });
     }
   }
 }

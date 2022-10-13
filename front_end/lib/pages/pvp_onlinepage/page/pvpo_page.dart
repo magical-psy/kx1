@@ -1,36 +1,33 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:the_gorgeous_login/pages/pve_page/moduels/pannel.dart';
-import 'package:the_gorgeous_login/pages/pve_page/provider/PvEprovider.dart';
+import 'package:the_gorgeous_login/config/request/methods.dart';
+import 'package:the_gorgeous_login/pages/login_page/provider/loginprovider.dart';
+import 'package:the_gorgeous_login/pages/pvp_onlinepage/moduel/pannel.dart';
+import 'package:the_gorgeous_login/pages/pvp_onlinepage/provider/pvpoprovider.dart';
 
-class PvEPage extends StatefulWidget {
-  const PvEPage({Key key}) : super(key: key);
+class PvPOPage extends StatefulWidget {
+  const PvPOPage({Key key}) : super(key: key);
   @override
-  _PvPPageState createState() => _PvPPageState();
+  _PvPOPageState createState() => _PvPOPageState();
 }
 
-class _PvPPageState extends State<PvEPage> {
-  int first = 1;
-  bool check() {
-    if (first == 1) {
-      first = 0;
-      return false;
-    } else
-      return true;
-  }
-
+class _PvPOPageState extends State<PvPOPage> {
   @override
   Widget build(BuildContext context) {
-    final gamedata = Provider.of<PvEData>(context, listen: true);
+    final gamedata = Provider.of<PvPOData>(context, listen: true);
+    final userdata = Provider.of<userData>(context, listen: true);
+    gamedata.connect(userdata.userid, context);
+
     return Scaffold(
         appBar: AppBar(
             elevation: 2.0,
             backgroundColor: Color.fromRGBO(135, 206, 250, 1),
-            title: Container(child: Consumer<PvEData>(
+            title: Container(child: Consumer<PvPOData>(
               builder: (context, gamedata, _) {
                 return Text(
-                  "挑战模式",
+                  gamedata.turn == 0 ? "对手的回合" : "你的回合",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25.0,
@@ -47,7 +44,7 @@ class _PvPPageState extends State<PvEPage> {
                     builder: (context) {
                       return CupertinoAlertDialog(
                         title: Text('提示'),
-                        content: Text('确定要离开？'),
+                        content: Text('你确定要离开'),
                         actions: <Widget>[
                           CupertinoDialogAction(
                             child: Text('取消'),
@@ -57,8 +54,16 @@ class _PvPPageState extends State<PvEPage> {
                           ),
                           CupertinoDialogAction(
                             child: Text('离开'),
-                            onPressed: () {
+                            onPressed: () async {
                               gamedata.reset(context);
+
+                              Map<String, dynamic> data = {
+                                "userId1": "${userdata.getuserid}",
+                                "userId2": "${gamedata.opponent}"
+                              };
+                              var content = await DioUtil.requestData("quit",
+                                  formData: data);
+                              print(content);
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
                               // ApplicationRouter.router
@@ -86,7 +91,7 @@ class _PvPPageState extends State<PvEPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Consumer<PvEData>(builder: (context, gamedata, _) {
+                    Consumer<PvPOData>(builder: (context, gamedata, _) {
                       return Text(
                         "point\n${gamedata.uppoint}",
                         style: TextStyle(
@@ -95,7 +100,7 @@ class _PvPPageState extends State<PvEPage> {
                             fontFamily: 'WorkSansBold'),
                       );
                     }),
-                    Consumer<PvEData>(builder: (context, gamedata, _) {
+                    Consumer<PvPOData>(builder: (context, gamedata, _) {
                       return Text(
                         "point\n${gamedata.downpoint}",
                         style: TextStyle(
@@ -146,15 +151,24 @@ class _get_moveState extends State<get_move> {
                   ),
                 ),
                 child: Text(
-                  " 掷骰子 ",
+                  " 投骰子 ",
                   style: TextStyle(color: Colors.white),
                 )),
             onPressed: () {
-              final data = Provider.of<PvEData>(context, listen: false);
-              data.getnum();
+              final data = Provider.of<PvPOData>(context, listen: false);
+              if (data.turn == 1) {
+                data.getnum();
+              }
             }),
         NumSource()
       ],
     );
+  }
+}
+
+List<int> parse(String mat) {
+  List<int> d;
+  for (int i = 1; i < 26; i += 3) {
+    d.add(int.parse(mat[i]));
   }
 }

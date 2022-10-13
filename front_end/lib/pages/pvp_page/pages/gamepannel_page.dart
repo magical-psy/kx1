@@ -1,52 +1,64 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/moduels/pannel.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/provider/PvPprovider.dart';
 
-class GamepannelPage extends StatefulWidget {
-  const GamepannelPage({Key key}) : super(key: key);
+class PvPPage extends StatefulWidget {
+  const PvPPage({Key key}) : super(key: key);
   @override
-  _GamepannelPageState createState() => _GamepannelPageState();
+  _PvPPageState createState() => _PvPPageState();
 }
 
-class _GamepannelPageState extends State<GamepannelPage> {
+class _PvPPageState extends State<PvPPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             elevation: 2.0,
-            backgroundColor: Colors.white,
-            title: Text('undetermined',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 30.0)),
-            leading: OutlinedButton(
-              child: Text('leave'),
+            backgroundColor: Color.fromRGBO(135, 206, 250, 1),
+            title: Container(child: Consumer<PvPData>(
+              builder: (context, gamedata, _) {
+                if (gamedata.back == 1) {
+                  Navigator.of(context).pop();
+                  gamedata.back = 0;
+                }
+                return Text(
+                  gamedata.turn == 0 ? "绿方的回合" : "蓝方的回合",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25.0,
+                      fontFamily: 'WorkSansBold'),
+                );
+              },
+            )),
+            leading: MaterialButton(
+              shape: StadiumBorder(side: BorderSide.none),
+              child: Icon(Icons.arrow_back_ios),
               onPressed: () {
                 showCupertinoDialog(
                     context: context,
                     builder: (context) {
                       return CupertinoAlertDialog(
-                        title: Text('hint'),
-                        content: Text('are you sure about it'),
+                        title: Text('提示'),
+                        content: Text('确定要离开'),
                         actions: <Widget>[
                           CupertinoDialogAction(
-                            child: Text('cancel'),
+                            child: Text('取消'),
                             onPressed: () {
                               Navigator.of(context).pop('cancel');
                             },
                           ),
                           CupertinoDialogAction(
-                            child: Text('leave'),
+                            child: Text('离开'),
                             onPressed: () {
+                              final gamedata =
+                                  Provider.of<PvPData>(context, listen: false);
+                              gamedata.reset();
                               Navigator.of(context).pop();
-                              ApplicationRouter.router
-                                  .navigateTo(context, '/login');
+                              Navigator.of(context).pop();
+                              // ApplicationRouter.router
+                              //     .navigateTo(context, '/mode', replace: true);
                             },
                           ),
                         ],
@@ -54,102 +66,60 @@ class _GamepannelPageState extends State<GamepannelPage> {
                     });
               },
             )),
-        body: Row(children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 1.0),
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFFfbab66),
-                    Colors.pinkAccent,
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: const AssetImage('assets/img/mode.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Row(children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration:
+                    BoxDecoration(color: Color.fromRGBO(200, 200, 200, 0.3)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Consumer<PvPData>(builder: (context, gamedata, _) {
+                      return Text(
+                        "分数\n${gamedata.uppoint}",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                            fontFamily: 'WorkSansBold'),
+                      );
+                    }),
+                    Consumer<PvPData>(builder: (context, gamedata, _) {
+                      return Text(
+                        "分数\n${gamedata.downpoint}",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                            fontFamily: 'WorkSansBold'),
+                      );
+                    })
                   ],
                 ),
               ),
-              child: Column(
-                children: [
-                  Container(child: Consumer<PvPData>(
-                    builder: (context, gamedata, _) {
-                      return Text(
-                        gamedata.turn == 0 ? "Opponent's Round" : "Your Turn",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25.0,
-                            fontFamily: 'WorkSansBold'),
-                      );
-                    },
-                  ))
-                ],
-              ),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
+            Expanded(
+              flex: 5,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        Image(
-                            height: MediaQuery.of(context).size.height * 0.1,
-                            width: MediaQuery.of(context).size.height * 0.1,
-                            fit: BoxFit.fill,
-                            image: const AssetImage('assets/img/p1.JPG')),
-                        Text("くりやま みらい"),
-                        Consumer<PvPData>(builder: (context, gamedata, _) {
-                          return Text("point:\n${gamedata.uppoint}");
-                        })
-                      ],
-                    ),
+                  Pannel(
+                    position: 0,
                   ),
-                  Container(
-                    child: Column(
-                      children: [
-                        Image(
-                            height: MediaQuery.of(context).size.height * 0.1,
-                            width: MediaQuery.of(context).size.height * 0.1,
-                            fit: BoxFit.fill,
-                            image: const AssetImage('assets/img/p2.JPG')),
-                        Text("Princess Zelda"),
-                        Consumer<PvPData>(builder: (context, gamedata, _) {
-                          return Text("point:\n${gamedata.downpoint}");
-                        })
-                      ],
-                    ),
-                  )
+                  Pannel(position: 1),
+                  get_move()
                 ],
               ),
             ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Pannel(
-                  position: 0,
-                ),
-                Container(
-                  child: Image(
-                      height:
-                          MediaQuery.of(context).size.height > 800 ? 111.0 : 70,
-                      fit: BoxFit.fill,
-                      image: const AssetImage('assets/img/login_logo.png')),
-                ),
-                Pannel(position: 1),
-                get_move()
-              ],
-            ),
-          ),
-        ]));
+          ]),
+        ));
   }
 }
 
@@ -166,7 +136,21 @@ class _get_moveState extends State<get_move> {
     return Row(
       children: [
         OutlinedButton(
-            child: Text("get a redom num"),
+            child: Container(
+                alignment: Alignment.center,
+                height: MediaQuery.of(context).size.width * 1 / 8,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(3.0)),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.blue, Colors.green],
+                  ),
+                ),
+                child: Text(
+                  " 掷骰子 ",
+                  style: TextStyle(color: Colors.white),
+                )),
             onPressed: () {
               final data = Provider.of<PvPData>(context, listen: false);
               data.getnum();

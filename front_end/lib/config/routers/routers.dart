@@ -9,6 +9,9 @@ class Routes {
   static String mode = '/mode';
   static String loginmode = '/loginmode';
   static String pve = '/pve';
+  static String matching = '/matching';
+  static String pvpo = '/pvpo';
+  static String c = '/charpter';
 
   static void configureRoutes(fluro.Router router) {
     router.notFoundHandler = new fluro.Handler(
@@ -22,5 +25,8 @@ class Routes {
     router.define(mode, handler: modeHandler);
     router.define(loginmode, handler: loinmodeHandler);
     router.define(pve, handler: pveHandler);
+    router.define(matching, handler: matchingHandler);
+    router.define(pvpo, handler: PVPOHandler);
+    router.define(c, handler: cHandler);
   }
 }

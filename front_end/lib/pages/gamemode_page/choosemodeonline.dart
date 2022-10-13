@@ -1,6 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/config/theme.dart';
+import 'package:the_gorgeous_login/pages/inf_page/intro.dart';
+import 'package:the_gorgeous_login/pages/inf_page/rank.dart';
+import 'package:the_gorgeous_login/pages/pve_page/provider/PvEprovider.dart';
 
 class chooseModeOnlinePage extends StatelessWidget {
   const chooseModeOnlinePage({Key key}) : super(key: key);
@@ -9,6 +14,12 @@ class chooseModeOnlinePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage('assets/img/mode.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -18,21 +29,13 @@ class chooseModeOnlinePage extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: CustomTheme.loginGradientStart,
-                    offset: Offset(1.0, 6.0),
-                    blurRadius: 20.0,
-                  ),
-                  BoxShadow(
-                    color: CustomTheme.loginGradientEnd,
+                    color: Colors.purple,
                     offset: Offset(1.0, 6.0),
                     blurRadius: 20.0,
                   ),
                 ],
                 gradient: LinearGradient(
-                    colors: <Color>[
-                      CustomTheme.loginGradientEnd,
-                      CustomTheme.loginGradientStart
-                    ],
+                    colors: <Color>[Colors.purple, Colors.blue],
                     begin: FractionalOffset(0.2, 0.2),
                     end: FractionalOffset(1.0, 1.0),
                     stops: <double>[0.0, 1.0],
@@ -45,7 +48,7 @@ class chooseModeOnlinePage extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
                   child: Text(
-                    'Search for opponents',
+                    '搜索对手',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25.0,
@@ -53,7 +56,7 @@ class chooseModeOnlinePage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  ApplicationRouter.router.navigateTo(context, '/gamepannel');
+                  ApplicationRouter.router.navigateTo(context, '/matching');
                 },
               ),
             ),
@@ -62,21 +65,13 @@ class chooseModeOnlinePage extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: CustomTheme.loginGradientStart,
-                    offset: Offset(1.0, 6.0),
-                    blurRadius: 20.0,
-                  ),
-                  BoxShadow(
-                    color: CustomTheme.loginGradientEnd,
+                    color: Colors.blue,
                     offset: Offset(1.0, 6.0),
                     blurRadius: 20.0,
                   ),
                 ],
                 gradient: LinearGradient(
-                    colors: <Color>[
-                      CustomTheme.loginGradientEnd,
-                      CustomTheme.loginGradientStart
-                    ],
+                    colors: <Color>[Colors.blue, Colors.green],
                     begin: FractionalOffset(0.2, 0.2),
                     end: FractionalOffset(1.0, 1.0),
                     stops: <double>[0.0, 1.0],
@@ -106,21 +101,13 @@ class chooseModeOnlinePage extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: CustomTheme.loginGradientStart,
-                    offset: Offset(1.0, 6.0),
-                    blurRadius: 20.0,
-                  ),
-                  BoxShadow(
-                    color: CustomTheme.loginGradientEnd,
+                    color: Colors.green,
                     offset: Offset(1.0, 6.0),
                     blurRadius: 20.0,
                   ),
                 ],
                 gradient: LinearGradient(
-                    colors: <Color>[
-                      CustomTheme.loginGradientEnd,
-                      CustomTheme.loginGradientStart
-                    ],
+                    colors: <Color>[Colors.green, Colors.yellow],
                     begin: FractionalOffset(0.2, 0.2),
                     end: FractionalOffset(1.0, 1.0),
                     stops: <double>[0.0, 1.0],
@@ -133,7 +120,7 @@ class chooseModeOnlinePage extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
                     child: Text(
-                      'PvE',
+                      '挑战模式',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
@@ -141,9 +128,58 @@ class chooseModeOnlinePage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    ApplicationRouter.router.navigateTo(context, '/pve');
+                    ApplicationRouter.router.navigateTo(context, '/charpter');
+
+                    final data = Provider.of<PvEData>(context, listen: false);
+                    data.reset(context);
+                    data.turn = 1;
                   }),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(
+                  child: const Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    child: Text(
+                      '规则介绍',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontFamily: 'WorkSansBold'),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return rule();
+                    }));
+                  },
+                ),
+                TextButton(
+                  child: const Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    child: Text(
+                      '排行榜',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontFamily: 'WorkSansBold'),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return rank();
+                    }));
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
