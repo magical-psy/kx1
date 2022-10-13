@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage>
                     height:
                         MediaQuery.of(context).size.height > 800 ? 191.0 : 150,
                     fit: BoxFit.fill,
-                    image: const AssetImage('assets/img/login_logo.png')),
+                    image: const AssetImage('assets/img/p1.JPG')),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 onPressed: _onSignInButtonPress,
                 child: Text(
-                  'Existing',
+                  '已有账号',
                   style: TextStyle(
                       color: left,
                       fontSize: 16.0,
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 onPressed: _onSignUpButtonPress,
                 child: Text(
-                  'New',
+                  '未注册',
                   style: TextStyle(
                       color: right,
                       fontSize: 16.0,

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:the_gorgeous_login/config/request/methods.dart';
+import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/config/theme.dart';
 import 'package:the_gorgeous_login/pages/login_page/models/snackbar.dart';
+import 'package:the_gorgeous_login/pages/login_page/provider/loginprovider.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key key}) : super(key: key);
@@ -73,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.user,
                               color: Colors.black,
                             ),
-                            hintText: 'Name',
+                            hintText: '昵称',
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
@@ -105,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.envelope,
                               color: Colors.black,
                             ),
-                            hintText: 'Email Address',
+                            hintText: '邮箱',
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
@@ -137,7 +141,7 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.lock,
                               color: Colors.black,
                             ),
-                            hintText: 'Password',
+                            hintText: '密码',
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                             suffixIcon: GestureDetector(
@@ -179,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.lock,
                               color: Colors.black,
                             ),
-                            hintText: 'Confirmation',
+                            hintText: '确认密码',
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                             suffixIcon: GestureDetector(
@@ -237,7 +241,7 @@ class _SignUpState extends State<SignUp> {
                     padding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
                     child: Text(
-                      'SIGN UP',
+                      '注册',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
@@ -254,8 +258,26 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void _toggleSignUpButton() {
+  Future<void> _toggleSignUpButton() async {
+    Map<String, dynamic> data = {
+      "id": "${signupEmailController.text}",
+      "password": "${signupPasswordController.text}",
+      "name": "${signupNameController.text}",
+    };
+    var content = await DioUtil.requestData("signup", formData: data);
+    print(content["code"]);
+    if (content["code"] != 0) {
+      CustomSnackBar(context, const Text('maybe yor email has been used'));
+      return;
+    }
+
+    final userdata = Provider.of<userData>(context, listen: false);
+    userdata.updateuserid(signupEmailController.text);
     CustomSnackBar(context, const Text('SignUp button pressed'));
+    Future.delayed(Duration(milliseconds: 1000), () {
+      print("延时1秒执行");
+      ApplicationRouter.router.navigateTo(context, '/loginmode');
+    });
   }
 
   void _toggleSignup() {

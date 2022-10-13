@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/config/request/methods.dart';
 import 'package:the_gorgeous_login/config/routers/router_application.dart';
 import 'package:the_gorgeous_login/config/theme.dart';
 import 'package:the_gorgeous_login/pages/login_page/models/snackbar.dart';
+import 'package:the_gorgeous_login/pages/login_page/provider/loginprovider.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key key}) : super(key: key);
@@ -66,7 +68,7 @@ class _SignInState extends State<SignIn> {
                               color: Colors.black,
                               size: 22.0,
                             ),
-                            hintText: 'Email Address',
+                            hintText: '邮箱或ID',
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                           ),
@@ -98,7 +100,7 @@ class _SignInState extends State<SignIn> {
                               size: 22.0,
                               color: Colors.black,
                             ),
-                            hintText: 'Password',
+                            hintText: '密码',
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                             suffixIcon: GestureDetector(
@@ -149,60 +151,103 @@ class _SignInState extends State<SignIn> {
                       tileMode: TileMode.clamp),
                 ),
                 child: MaterialButton(
+                  minWidth: MediaQuery.of(context).size.width * 1 / 3,
                   highlightColor: Colors.transparent,
                   splashColor: CustomTheme.loginGradientEnd,
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25.0,
-                          fontFamily: 'WorkSansBold'),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 0),
+                    child: Container(
+                      child: Text(
+                        '登录',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'WorkSansBold'),
+                      ),
                     ),
                   ),
-                  onPressed: () async {
-                    // ApplicationRouter.router.navigateTo(context, '/loginmode');
-                    Map<String, dynamic> data = {
-                      "id": "${loginEmailController.text}",
-                      "password": "${loginPasswordController.text}"
-                    };
-                    var content = await DioUtil.requestData("homePageUrl",
-                        formData: data);
-                    print(content["code"]);
-                    if (content["code"] != 0) {
-                      return;
-                    }
-                    CustomSnackBar(context, const Text('Login button pressed'));
+                  onPressed: () {
+                    _toggleSignInButton();
                   },
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 250.0),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: CustomTheme.loginGradientStart,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                    BoxShadow(
+                      color: CustomTheme.loginGradientEnd,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                  ],
+                  gradient: LinearGradient(
+                      colors: <Color>[
+                        CustomTheme.loginGradientEnd,
+                        CustomTheme.loginGradientStart
+                      ],
+                      begin: FractionalOffset(0.2, 0.2),
+                      end: FractionalOffset(1.0, 1.0),
+                      stops: <double>[0.0, 1.0],
+                      tileMode: TileMode.clamp),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: MaterialButton(
+                    minWidth: MediaQuery.of(context).size.width * 1 / 3,
+                    highlightColor: Colors.transparent,
+                    splashColor: CustomTheme.loginGradientEnd,
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 0.0, horizontal: 3.0),
+                      child: const Text(
+                        '离线模式',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 25.0,
+                            fontFamily: 'WorkSansBold'),
+                      ),
+                    ),
+                    onPressed: () {
+                      ApplicationRouter.router.navigateTo(context, '/mode');
+                    },
+                  ),
                 ),
               )
             ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: TextButton(
-                onPressed: () {
-                  ApplicationRouter.router.navigateTo(context, '/mode');
-                },
-                child: const Text(
-                  'play without login',
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Colors.white,
-                      fontSize: 30.0,
-                      fontFamily: 'WorkSansMedium'),
-                )),
           ),
         ],
       ),
     );
   }
 
-  void _toggleSignInButton() {
-    CustomSnackBar(context, const Text('Login button pressed'));
-    ApplicationRouter.router.navigateTo(context, '/loginmode');
+  Future<void> _toggleSignInButton() async {
+    Map<String, dynamic> data = {
+      "id": "${loginEmailController.text}",
+      "password": "${loginPasswordController.text}"
+    };
+    var content = await DioUtil.requestData("signin", formData: data);
+    if (content["code"] != 0) {
+      CustomSnackBar(context, Text('请输入正确的信息'));
+      return;
+    }
+    print(content);
+
+    final userdata = Provider.of<userData>(context, listen: false);
+    userdata.updateuserid(loginEmailController.text);
+    CustomSnackBar(context, Text('你好 ${content["data"]["username"]}'));
+    Future.delayed(Duration(milliseconds: 1000), () {
+      print("延时1秒执行");
+      ApplicationRouter.router.navigateTo(context, '/loginmode');
+    });
   }
 
   void _toggleLogin() {

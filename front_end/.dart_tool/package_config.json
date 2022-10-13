@@ -14,6 +14,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "card_swiper",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/card_swiper-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/characters-1.1.0",
       "packageUri": "lib/",
@@ -34,6 +40,12 @@
     {
       "name": "collection",
       "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/collection-1.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/crypto-3.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -68,10 +80,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_easyloading",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyloading-3.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_sparkline",
       "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sparkline-0.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "flutter_spinkit",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_spinkit-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_staggered_grid_view",
@@ -134,6 +158,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "shake_animation_widget",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/shake_animation_widget-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///D:/downloads/flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -188,13 +218,19 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "web_socket_channel",
+      "rootUri": "file:///D:/downloads/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/web_socket_channel-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "the_gorgeous_login",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2022-10-08T10:00:15.898621Z",
+  "generated": "2022-10-12T16:08:46.754729Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }

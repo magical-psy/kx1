@@ -3,9 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:the_gorgeous_login/pages/login_page/pages/login_page.dart';
 import 'package:fluro/fluro.dart' as fluro;
+import 'package:the_gorgeous_login/pages/pve_page/provider/PvEprovider.dart';
 import 'package:the_gorgeous_login/pages/pvp_page/provider/PvPprovider.dart';
 import 'config/routers/router_application.dart';
 import 'config/routers/routers.dart';
+import 'pages/login_page/provider/loginprovider.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import 'pages/pvp_onlinepage/provider/pvpoprovider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +20,18 @@ void main() {
   ]);
 
   final gamedata = PvPData();
+  final pvedata = PvEData();
+  final userdata = userData();
+  final pvpdata = PvPOData();
 
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: gamedata)],
+      providers: [
+        ChangeNotifierProvider.value(value: gamedata),
+        ChangeNotifierProvider.value(value: userdata),
+        ChangeNotifierProvider.value(value: pvedata),
+        ChangeNotifierProvider.value(value: pvpdata)
+      ],
       child: MyApp(),
     ),
   );
@@ -31,10 +44,11 @@ class MyApp extends StatelessWidget {
     ApplicationRouter.router = router;
     // 完成路由全局配置和路由定义
     Routes.configureRoutes(router);
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'remember to name it',
       home: LoginPage(),
+      builder: EasyLoading.init(),
     );
   }
 }

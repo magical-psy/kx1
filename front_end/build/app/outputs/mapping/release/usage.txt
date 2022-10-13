@@ -1495,8 +1495,8 @@ io.flutter.plugin.platform.PlatformViewRegistryImpl:
     public boolean registerViewFactory(java.lang.String,io.flutter.plugin.platform.PlatformViewFactory)
 androidx.core.app.ServiceCompat$StopForegroundFlags
 androidx.loader.R$style
-kotlin.collections.ArraysKt
 kotlin.UIntArray$Iterator
+kotlin.collections.ArraysKt
 androidx.core.net.ConnectivityManagerCompat
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$1
 kotlin.text.MatcherMatchResult$groupValues$1
@@ -1963,8 +1963,8 @@ androidx.core.content.res.ConfigurationHelper
 kotlin.internal.OnlyInputTypes
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$4
 androidx.core.view.accessibility.AccessibilityViewCommand$ScrollToPositionArguments
-kotlin.coroutines.experimental.SafeContinuation
 kotlin.coroutines.experimental.CombinedContext$toString$1
+kotlin.coroutines.experimental.SafeContinuation
 kotlin.jvm.internal.EnumCompanionObject
 androidx.core.app.TaskStackBuilder$SupportParentable
 androidx.viewpager.widget.ViewPager
@@ -2586,8 +2586,8 @@ androidx.customview.widget.ExploreByTouchHelper$1
 androidx.core.graphics.PathSegment
 androidx.core.app.SharedElementCallback
 androidx.core.graphics.drawable.IconCompat$IconType
-kotlin.UnsignedKt
 kotlin.io.AccessDeniedException
+kotlin.UnsignedKt
 android.support.v4.os.IResultReceiver
 androidx.core.graphics.drawable.RoundedBitmapDrawable
 kotlin.SafePublicationLazyImpl

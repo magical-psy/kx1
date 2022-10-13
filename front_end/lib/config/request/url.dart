@@ -3,5 +3,7 @@
 const serviceUrl = 'http://120.77.79.99:8085';
 
 const servicePath = {
-  'homePageUrl': serviceUrl + '/user/login', // loginrequest
+  'signin': serviceUrl + '/user/login',
+  'signup': serviceUrl + '/user/register',
+  'quit': serviceUrl + '/disRelation'
 };

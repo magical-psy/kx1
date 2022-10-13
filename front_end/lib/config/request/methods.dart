@@ -1,14 +1,5 @@
-/*
- * -------请求简单封装-------
- * 由于所有接口是POST请求，就写死了请求方式
-*/
-
 import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
-import 'dart:async';
-
 import 'package:the_gorgeous_login/config/request/url.dart';
 
 class DioUtil {
@@ -33,6 +24,22 @@ class DioUtil {
           data: formdata,
         );
       }
+      if (response.statusCode == 200) {
+        String data = response.data;
+        return jsonDecode(data);
+      } else {
+        throw Exception("接口异常");
+      }
+    } catch (e) {
+      print("网络出现错误");
+    }
+  }
+
+  static match(url) async {
+    try {
+      Response response;
+      response = await dio.get(url);
+
       if (response.statusCode == 200) {
         String data = response.data;
         return jsonDecode(data);

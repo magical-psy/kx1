@@ -12,16 +12,16 @@
         "source": "C:\\Users\\psy\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "C:\\Users\\psy\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\psy\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+        "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\psy\\Desktop\\kx2\\front_end\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
